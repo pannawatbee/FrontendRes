@@ -1,11 +1,15 @@
 import {BrowserRouter,Switch,Route} from "react-router-dom"
+import Header from "./components/header/Header";
 import HomePage from "./pages/HomePage";
 import Contract from "./pages/Contract";
-import './App.css';
+import './assets/css/main.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
     <div className="App">
+      <Header/>
       <BrowserRouter>
       <Switch>
        <Route path='/homepage' component={HomePage}/ >

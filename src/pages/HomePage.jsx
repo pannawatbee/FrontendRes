@@ -1,64 +1,43 @@
-import React from 'react'
-import {Link} from "react-router-dom"
-import './HomePage.css'
-import Carousel from 'react-bootstrap/Carousel'
-import CarouselCaption   from 'react-bootstrap/CarouselCaption';
-import CarouselItem from 'react-bootstrap/CarouselItem';
-// import Carousel.Item from 'react-bootstrap/Carousel.Item'
+import React from "react";
+import { Link } from "react-router-dom";
+import "../assets/css/HomePage.css";
+import Hottobun from "../assets/images/Hottobun.jpg";
+import Copper from "../assets/images/copper.png"
+import Starbuck from "../assets/images/starbuck.jpg"
+
+import CarouselCard from "../components/home/CarouselCard";
+
 function HomePage() {
-    return (
-        <>
-          <div className="navigator">
-      <div class="nav-left">
-        <a href="home.html">หน้าแรก</a>
-        <a href="review-res.html">รีวิวร้านอาหาร</a>
-        <a href="category-res.html">หมวดหมู่ร้านอาหาร</a>
-      </div>
-      <div class="nav-right">
-        <a href="#" class="a-right">PANNAWAT ANANCHAITAM</a>
-        <a href="contract.html" class="a-right">ติดต่อเรา</a>
-        <a href="login.html" class="a-right">เข้าสู่ระบบ</a>
+  return (
+    <div className="container">
+      <div id="myCarousel" className="carousel slide" data-ride="carousel">
+        <ol className="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div className="carousel-inner">
+          <div className="item active">
+            <CarouselCard name="Hottobun" img={Hottobun}/>
+          </div>
+          <div className="item">
+            <CarouselCard name="Copper" img={Copper}/>
+          </div>
+          <div className="item">
+            <CarouselCard name="Starbuck" img={Starbuck}/>
+          </div>
+        </div>
+        <a className="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span className="glyphicon glyphicon-chevron-left"></span>
+          <span className="sr-only">Previous</span>
+        </a>
+        <a className="right carousel-control" href="#myCarousel" data-slide="next">
+          <span className="glyphicon glyphicon-chevron-right"></span>
+          <span className="sr-only">Next</span>
+        </a>
       </div>
     </div>
-    <Carousel>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="https://picsum.photos/200/300"
-      alt="First slide"
-    />
-    <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="https://picsum.photos/200/300"
-      alt="Second slide"
-    />
-
-    <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="https://picsum.photos/200/300"
-      alt="Third slide"
-    />
-
-    <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-</Carousel>
-        </>
-    )
+  );
 }
 
-export default HomePage
+export default HomePage;
