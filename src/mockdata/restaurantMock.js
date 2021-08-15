@@ -1,8 +1,9 @@
+import Hottobun from "../assets/images/Hottobun.jpg"
 const restaurantMock = [
   {
     restaurantId: 1,
     restaurantName: "Hottobun",
-    restaurantImage: "picture/Hottobun.jpg",
+    restaurantImage: Hottobun,
     restaurantDetailLink: "review-card.html?resId=1",
     restaurantDetail:
       "ฮอตโตะ บัน เป็นร้านอาหารกึ่งคาเฟ่สไตล์ญี่ปุ่นร่วมสมัย มีเมนูที่อร่อยมากหลากหลาย จากไอเดียสุดเฉียบของเชฟมากฝีมือจาก New York...",
