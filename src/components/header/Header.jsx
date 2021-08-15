@@ -1,12 +1,15 @@
 import React from "react";
 import "../../assets/css/HomePage.css";
+// import { NavLink, Link } from 'react-router-dom';
+// import {Route, Switch} from "react-router";
+import {Link } from "react-router-dom";
 function Header() {
   return (
-    <>
+    
       <div className="navigator">
         <div className="nav-left">
-          <a href="home.html">หน้าแรก</a>
-          <a href="review-res.html">รีวิวร้านอาหาร</a>
+          <Link to='/'>หน้าแรก</Link>
+         <Link to="/ReviewRes">รีวิวร้านอาหาร</Link>
           <a href="category-res.html">หมวดหมู่ร้านอาหาร</a>
         </div>
         <div className="nav-right">
@@ -21,7 +24,7 @@ function Header() {
           </a>
         </div>
       </div>
-    </>
+    
   );
 }
 

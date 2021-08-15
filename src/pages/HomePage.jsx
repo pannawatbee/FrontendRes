@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "../assets/css/HomePage.css";
 import Hottobun from "../assets/images/Hottobun.jpg";
 import Copper from "../assets/images/copper.png"
