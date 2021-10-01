@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 function Card(props) {
   return (
     <div class="card1">
-      <a href="review-card.html">
+       <Link to={props.url}>
         <img src={props.img} alt="" />
         <p>{props.name}</p>
-      </a>
+        </Link>
     </div>
   );
 }

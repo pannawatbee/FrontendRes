@@ -1,0 +1,414 @@
+
+body {
+    margin: 0;
+    font-family: "Kanit", sans-serif;
+  }
+  
+  .navigator {
+    width: 1920px;
+    height: 120px;
+    background: #b22222;
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav-left {
+    /* border: 1px solid black; */
+    width: 1020px;
+    height: 120px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .nav-right {
+    /* border: 1px solid blue; */
+    width: 900px;
+    height: 120px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    top: 15px;
+    right: 10px;
+  }
+  a {
+    text-decoration: none !important;
+    font-size: 50px;
+    line-height: 59px;
+    color: #ffffff;
+    font-family: "Kanit", sans-serif;
+  }
+  a:hover {
+    color: rgba(250, 188, 116, 1);
+  }
+  
+  .a-right {
+    font-size: 36px;
+    line-height: 42px;
+  }
+  
+  .food-background {
+    width: 100%;
+    height: 600px;
+    /* background-image: url("picture/Hottobun.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+    position: relative;
+  }
+  .food-background h3 {
+    position: absolute;
+    font-size: 50px;
+    line-height: 59px;
+    color: #ffffff;
+    left: 10%;
+    top: 10%;
+  }
+  .food-background > p {
+    position: absolute;
+    font-size: 36px;
+    line-height: 42px;
+    color: #ffffff;
+    max-width: 640px;
+    height: 144px;
+    left: 10%;
+    top: 30%;
+  }
+  .review-point-bac {
+    position: absolute;
+    width: 310px;
+    height: 90px;
+    right: 10%;
+    top: 50%;
+    background-color: #b22222;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    justify-content: space-evenly;
+  }
+  .write-review-bac {
+    width: 200px;
+    height: 90px;
+    background-color: #b22222;
+    border-radius: 20px;
+    position: absolute;
+    right: 10%;
+    top: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .review-point {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 47px;
+    color: #fef7f7;
+    position: relative;
+    left: 15px;
+  }
+  .star {
+    font-size: 60px;
+    color: rgba(250, 188, 116, 1);
+  }
+  .num-review {
+    /* font-family: Roboto; */
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 47px;
+    color: #fef7f7;
+    position: relative;
+    left: -15px;
+  }
+  .write-review {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 47px;
+    color: #fef7f7;
+  }
+  
+  .reviewcard-background {
+    background-color: rgba(196, 196, 196, 0.69);
+    height: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .bac-mid {
+    width: 1740px;
+    height: 960px;
+    /* border: 1px solid green; */
+    position: relative;
+    top: 80px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .bac-left {
+    width: 65%;
+    height: 100%;
+    /* border: 1px solid red; */
+    /* background-color: white; */
+    position: relative;
+  }
+  
+  .bac-left-card {
+    width: 65%;
+    height: 80%;
+    /* border: 1px solid red; */
+    position: absolute;
+    background-color: white;
+  }
+  
+  .bac-right {
+    width: 30%;
+    height: 50%;
+    /* border: 1px solid red; */
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 20px;
+  }
+  .bac-right-4 {
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 150px;
+  }
+  .bac-right-1 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .bac-right-2 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  
+  .bac-right-3 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .car-park {
+    /* border: 1px solid red; */
+    height: 50px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .wifi {
+    /* border: 1px solid red; */
+    height: 50px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .credit {
+    /* border: 1px solid red; */
+    height: 50px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .car-park span {
+    margin-left: 10px;
+  }
+  .wifi span {
+    margin-left: 10px;
+  }
+  .credit span {
+    margin-left: 10px;
+  }
+  /* .date {
+    position: relative;
+    left: 50%;
+  } */
+  .bac-left-card {
+    font-size: 24px;
+    line-height: 28px;
+    width: 100%;
+  }
+  .name-date {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+  }
+  
+  .heading-review {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    font-size: 36px;
+    line-height: 42px;
+  }
+  /* .picture-review {
+    text-align: center;
+    display: inline-block;
+  } */
+  .center {
+    display: block;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: 0 auto;
+    width: 60%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .detail {
+    font-size: 36px;
+    line-height: 42px;
+    margin-left: 10%;
+  }
+  /* .content p {
+    margin: 5%;
+    line-break: anywhere;
+  } */
+  .p-content {
+    width: 80%;
+    margin: 0px;
+    margin-top: 20px;
+    margin-left: 60px;
+  }
+  
+  .carousel-control.left, .carousel-control.right {
+    background-image:none !important;
+    filter:none !important;
+ }
+  @media (max-width: 1800px) {
+    .navigator {
+      flex-direction: column;
+    }
+  
+    .nav-left {
+      width: 100%;
+    }
+  
+    .nav-right {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 1000px) {
+    .navigator {
+      height: 16vw;
+    }
+  
+    .nav-left {
+      width: 100%;
+      height: 8vw;
+    }
+  
+    .nav-right {
+      width: 100%;
+      height: 8vw;
+    }
+  
+    .nav-left a {
+      font-size: 3vw;
+    }
+  
+    .nav-right a {
+      font-size: 3vw;
+    }
+  }
+  
+  @media (max-width: 1280px) {
+    .review-point-bac {
+      right: 5%;
+    }
+  
+    .write-review-bac {
+      right: 5%;
+    }
+  
+    .food-background h3 {
+      font-size: 36px;
+      left: 5%;
+    }
+  
+    .food-background > p {
+      font-size: 28px;
+      left: 5%;
+      top: 20%;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .food-background {
+      height: 400px;
+    }
+  
+    .food-background h3 {
+      font-size: 5vmin;
+      line-height: unset;
+      top: 0;
+    }
+  
+    .food-background > p {
+      font-size: 4vmin;
+      line-height: unset;
+      top: 13%;
+      padding-right: 4vw;
+    }
+    .review-point-bac {
+      right: 0;
+      transform: scale(0.6);
+      top: 56%;
+    }
+  
+    .write-review-bac {
+      right: 21px;
+      transform: scale(0.6);
+      top: 75%;
+    }
+  
+    .bac-right-1 {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  
+    .bac-right-2 {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  
+    .bac-right-3 {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  
+    .car-park {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  
+    .car-park > img {
+      width: 35px !important;
+    }
+  
+    .wifi {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  
+    .wifi > img {
+      width: 35px !important;
+    }
+  
+    .credit {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  
+    .credit > img {
+      width: 35px !important;
+    }
+  }
+  

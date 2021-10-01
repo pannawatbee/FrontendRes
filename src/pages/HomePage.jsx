@@ -4,7 +4,7 @@ import "../assets/css/HomePage.css";
 import Hottobun from "../assets/images/Hottobun.jpg";
 import Copper from "../assets/images/copper.png"
 import Starbuck from "../assets/images/starbuck.jpg"
-
+import { restaurantMock } from "../mockdata/restaurantMock";
 import CarouselCard from "../components/home/CarouselCard";
 
 function HomePage() {
@@ -18,13 +18,13 @@ function HomePage() {
         </ol>
         <div className="carousel-inner">
           <div className="item active">
-            <CarouselCard name="Hottobun" img={Hottobun}/>
+            <CarouselCard name="Hottobun" img={Hottobun} detail={restaurantMock[0].restaurantDetail}/>
           </div>
           <div className="item">
-            <CarouselCard name="Copper" img={Copper}/>
+            <CarouselCard name="Copper" img={Copper} detail={restaurantMock[1].restaurantDetail}/>
           </div>
           <div className="item">
-            <CarouselCard name="Starbuck" img={Starbuck}/>
+            <CarouselCard name="Starbuck" img={Starbuck} detail={restaurantMock[2].restaurantDetail}/>
           </div>
         </div>
         <a className="left carousel-control" href="#myCarousel" data-slide="prev">
