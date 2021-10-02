@@ -1,6 +1,7 @@
 import "../assets/css/ReviewCard.css";
 import { restaurantMock } from "../mockdata/restaurantMock";
 import checkbox from "../assets/images/checkbox-icon.jpg";
+import { Link } from "react-router-dom";
 function ReviewCard() {
   return (
     <>
@@ -23,9 +24,9 @@ function ReviewCard() {
         </div>
         <div class="write-review-bac">
           <div class="write-review">
-            <a href="review-write.html" class="write-review">
+            <Link to='/ReviewWrite' class="write-review">
               เขียนรีวิว
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -16,6 +16,7 @@ const restaurantMock = [
       "ฮอตโตะ บัน เป็นร้านอาหารกึ่งคาเฟ่สไตล์ญี่ปุ่นร่วมสมัย มีเมนูที่อร่อยมากหลากหลาย จากไอเดียสุดเฉียบของเชฟมากฝีมือจาก New York...",
     restaurantRating: 4.2,
     restaurantReviewCount: 5,
+    catagory:'res'
   },
   {
     restaurantId: 2,
@@ -26,6 +27,7 @@ const restaurantMock = [
       "ร้านอาหารบุฟเฟ่ต์นานาชาติที่เริ่มจากความชอบอาหารบุฟเฟ่ต์นานาชาติของตัวเจ้าของร้านคุณซัน กับครอบครัว ซึ่งมักไปรับประทานบุฟเฟ่ต์โรงแรมกันอย่างน้อยเดือนละ 1 ครั้ง",
     restaurantRating: 4.2,
     restaurantReviewCount: 5,
+    catagory:'buffet'
   },
   {
     restaurantId: 3,
@@ -36,6 +38,7 @@ const restaurantMock = [
       "วันนี้จากร้านกาแฟที่มีอยู่มากกว่า 80 ประเทศสตาร์บัคส์ถือได้ว่าเป็นผู้บุกบิกในการคั่วบดและค้าปลีกกาแฟคุณภาพเยี่ยมของโลก",
     restaurantRating: 4.2,
     restaurantReviewCount: 5,
+    catagory:'cafe'
   },
   {
     restaurantId: 4,
@@ -46,6 +49,7 @@ const restaurantMock = [
       "เป็นร้านกาแฟที่มีสาขามากที่สุดในประเทศไทย และเป็นแบรนด์ท้องถิ่นที่แข็งแกร่งที่สุดของประเทศ เพราะใช้เมล็ดกาแฟสดจากแหล่งเพาะปลูกที่ดีที่สุดของโลก",
     restaurantRating: 3.9,
     restaurantReviewCount: 4,
+    catagory:'cafe'
   },
   {
     restaurantId: 5,
@@ -56,6 +60,7 @@ const restaurantMock = [
       "จากร้านก๋วยเตี๋ยวเรือเอี้ยมจุ๊นในคลองรังสิต ผ่านประสบการณ์อันยาวนานกว่า 16 ปี วันนี้ “สวัสดี” ขอต้อนรับทุกท่านด้วยความอบอุ่น",
     restaurantRating: 3.9,
     restaurantReviewCount: 4,
+    catagory:'res'
   },
   {
     restaurantId: 6,
@@ -66,6 +71,7 @@ const restaurantMock = [
       "สเต็ก Santafe ที่ส่งต่อความอร่อยของ Steak(สเต็ก) ชิ้นโตรสชาติเข้มผ่านขบวนรถไฟแห่งความอร่อยมายังท่านทุกวัน",
     restaurantRating: 3.9,
     restaurantReviewCount: 4,
+    catagory:'res'
   },
   {
     restaurantId: 7,
@@ -76,6 +82,7 @@ const restaurantMock = [
       "Rolling roaster futuristic coffee ร้านกาแฟชื่อดังที่ตั้งอยู่ริมถนนพุทธมณฑลสาย 4 พรานนกเส้นตัดใหม่ ตอนเปิดใหม่ๆคิวยาวมาตั้งแต่ 07:00 น",
     restaurantRating: 3.9,
     restaurantReviewCount: 4,
+    catagory:'cafe'
   },
   {
     restaurantId: 8,
@@ -86,6 +93,7 @@ const restaurantMock = [
       "ฮะจิบัง ราเมน (Hachiban Ramen) หรือร้านราเมนหมายเลข 8 ก่อกำเนิดขึ้นสาขาแรก ในปี ค.ศ. 1967 บนถนน หลวงสาย 8 เขตคางะ เมืองอิชิกาวา ประเทศญี่ปุ่น ด้วยรสชาติของน้ำซุปเข้มข้น และกลมกล่อม เข้ากับเส้นราเมนเหนียวนุ่ม ทำให้ชาวญี่ปุ่นชื่นชอบกลายเป็นร้านบะหมี่ที่ได้รับความนิยมเพิ่มขึ้นตามลำดับ จนกลายมาเป็นราเมนที่ชื่นชอบของคนญี่ปุ่น",
     restaurantRating: 3.9,
     restaurantReviewCount: 4,
+    catagory:'res'
   },
 ];
 export { restaurantMock };
