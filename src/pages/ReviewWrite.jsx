@@ -3,26 +3,62 @@ import { useState } from "react";
 function ReviewWrite() {
   const [text, setText] = useState("");
   const [text2, setText2] = useState("");
+  // const [imgBlob , setImgBlob] = useState([])
+  const [formData , setFormData] = useState({
+    reviewName : "",
+    detailName : "",
+    starRating : "",
+    imgBlob : []
+  })
 
   const updateList = function () {
     var input = document.getElementById("fileUploader");
     var output = document.getElementById("divFiles");
     var HTML = "";
+    var arrBlob = []
     for (var i = 0; i < input.files.length; ++i) {
       console.log(input.files.item(i));
       let data = URL.createObjectURL(input.files.item(i));
       console.log(data);
+      urlToBase64(data , function(dataUrl){
+        arrBlob.push(dataUrl)
+      })
       HTML += `<img class="img-restaurant" src="${data}" alt=""></img>`;
     }
+    setFormData({...formData , 
+      imgBlob : arrBlob
+    })
     output.innerHTML = HTML;
   };
-  const updateList1 = function () {
+  const cancelReview = function () {
     var output = document.getElementById("divFiles");
     output.innerHTML = "";
   };
-  const updateList2 = function () {
-    
+
+  const urlToBase64 = (url, callback) => {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      var reader = new FileReader();
+      reader.onloadend = function() {
+        callback(reader.result);
+      }
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
+  }
+
+  const writeReview = function () {
+    //convert img to blob base64
+    console.log(formData)
   }; 
+
+  const onHandleStarRating = (value) => {
+    setFormData({...formData , 
+      starRating : value
+    })
+  }
   return (
     <>
       <div class="review-write-background">
@@ -35,16 +71,16 @@ function ReviewWrite() {
           <div class="label-give-point">
             <div class="point-name">ให้คะแนนย่างเนยเชียงราก</div>
             <div class="stars">
-              <input type="radio" id="one" name="rate" value="1" />
-              <label for="one"></label>
-              <input type="radio" id="two" name="rate" value="2" />
-              <label for="two"></label>
-              <input type="radio" id="three" name="rate" value="3" />
-              <label for="three"></label>
-              <input type="radio" id="four" name="rate" value="4" />
-              <label for="four"></label>
-              <input type="radio" id="five" name="rate" value="5" />
-              <label for="five"></label>
+              <input type="radio" id="one" name="rate" value="5" />
+              <label for="one" onClick={() => onHandleStarRating(5)}></label>
+              <input type="radio" id="two" name="rate" value="4" />
+              <label for="two" onClick={() => onHandleStarRating(4)}></label>
+              <input type="radio" id="three" name="rate" value="3"/>
+              <label for="three" onClick={() => onHandleStarRating(3)}></label>
+              <input type="radio" id="four" name="rate" value="2" />
+              <label for="four" onClick={() => onHandleStarRating(2)}></label>
+              <input type="radio" id="five" name="rate" value="1" />
+              <label for="five" onClick={() => onHandleStarRating(1)}></label>
               <span class="result"></span>
             </div>
           </div>
@@ -58,9 +94,11 @@ function ReviewWrite() {
                 type="text"
                 id="fname"
                 name="fname"
-                value={text}
+                value={formData.reviewName}
                 class="input"
-                onChange={(e) => setText(e.target.value)}
+                onChange={(e) => setFormData({...formData , 
+                  reviewName : e.target.value
+                })}
               />
               <br />
               <label for="review" class="label-header">
@@ -72,8 +110,10 @@ function ReviewWrite() {
                 name="w3review"
                 rows="4"
                 cols="50"
-                value={text2}
-                onChange={(e) => setText2(e.target.value)}
+                value={formData.detailName}
+                onChange={(e) => setFormData({...formData , 
+                  detailName : e.target.value
+                })}
               ></textarea>
             </form>
             <div id="divFiles" class="content-img"></div>
@@ -95,8 +135,8 @@ function ReviewWrite() {
               />
             </div>
             <div class="button-review-cancel">
-              <button onClick={updateList2}>บันทึกรีวิว</button>
-              <button  onClick={updateList1}>ยกเลิก</button>
+              <button onClick={writeReview}>บันทึกรีวิว</button>
+              <button  onClick={cancelReview}>ยกเลิก</button>
             </div>
           </div>
         </div>
