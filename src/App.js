@@ -5,8 +5,10 @@ import Contract from "./pages/Contract";
 import ReviewCard from "./pages/ReviewCard";
 import CategoryRes from "./pages/CategoryRes";
 import ReviewWrite from "./pages/ReviewWrite";
+import Login from "./pages/Login";
 import "./assets/css/main.css";
 import ReviewRes from "./pages/ReviewRes";
+import Register from "./pages/Register";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
           <Route path="/CategoryRes" component={CategoryRes} />
           <Route path="/ReviewWrite" component={ReviewWrite} />
           <Route path="/Contract" component={Contract} />
+          <Route path="/Login" component={Login} />
+          <Route path="/Register" component={Register} />
         </Switch>
       </BrowserRouter>
     </div>

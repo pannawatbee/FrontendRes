@@ -1,9 +1,29 @@
 import "../assets/css/ReviewWrite.css";
-import{useState} from'react'
+import { useState } from "react";
 function ReviewWrite() {
-      const[text,setText]=useState('')
-      const[text2,setText2]=useState('')
-      return (
+  const [text, setText] = useState("");
+  const [text2, setText2] = useState("");
+
+  const updateList = function () {
+    var input = document.getElementById("fileUploader");
+    var output = document.getElementById("divFiles");
+    var HTML = "";
+    for (var i = 0; i < input.files.length; ++i) {
+      console.log(input.files.item(i));
+      let data = URL.createObjectURL(input.files.item(i));
+      console.log(data);
+      HTML += `<img class="img-restaurant" src="${data}" alt=""></img>`;
+    }
+    output.innerHTML = HTML;
+  };
+  const updateList1 = function () {
+    var output = document.getElementById("divFiles");
+    output.innerHTML = "";
+  };
+  const updateList2 = function () {
+    
+  }; 
+  return (
     <>
       <div class="review-write-background">
         <div class="review-write-container">
@@ -40,7 +60,7 @@ function ReviewWrite() {
                 name="fname"
                 value={text}
                 class="input"
-                onChange={e=>setText(e.target.value)}
+                onChange={(e) => setText(e.target.value)}
               />
               <br />
               <label for="review" class="label-header">
@@ -53,7 +73,7 @@ function ReviewWrite() {
                 rows="4"
                 cols="50"
                 value={text2}
-                onChange={e=>setText2(e.target.value)}
+                onChange={(e) => setText2(e.target.value)}
               ></textarea>
             </form>
             <div id="divFiles" class="content-img"></div>
@@ -66,17 +86,17 @@ function ReviewWrite() {
 
               <input
                 class="uploadimage"
-                style={{visibility: "hidden"}}
+                style={{ visibility: "hidden" }}
                 id="fileUploader"
                 name="fileUploader"
                 type="file"
                 multiple="multiple"
-                onchange="updateList()"
+                onChange={updateList}
               />
             </div>
             <div class="button-review-cancel">
-              <button>บันทึกรีวิว</button>
-              <button>ยกเลิก</button>
+              <button onClick={updateList2}>บันทึกรีวิว</button>
+              <button  onClick={updateList1}>ยกเลิก</button>
             </div>
           </div>
         </div>

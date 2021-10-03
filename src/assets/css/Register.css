@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    font-family: "Kanit", sans-serif;
+    /* height: 100%;
+    width: 100%; */
+  }
+  .navigator {
+    width: 100%;
+    height: 120px;
+    background: #b22222;
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav-left {
+    /* border: 1px solid black; */
+    width: 1020px;
+    height: 120px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .nav-right {
+    /* border: 1px solid blue; */
+    width: 900px;
+    height: 120px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    top: 15px;
+    right: 10px;
+  }
+  a {
+    text-decoration: none !important;
+    font-size: 50px;
+    line-height: 59px;
+    color: #ffffff;
+    font-family: "Kanit", sans-serif;
+  }
+  a:hover {
+    color: rgba(250, 188, 116, 1);
+  }
+  
+  .a-right {
+    font-size: 36px;
+    line-height: 42px;
+  }
+  .reg-background {
+    background-color: rgba(196, 196, 196, 0.69);
+    height: 120%;
+    width: 100%;
+    position: absolute;
+  }
+  .reg-whitebg-register {
+    width: 50%;
+    height: 90%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    top: 5%;
+    position: relative;
+    /* padding-bottom: 15px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .blue-bac {
+    width: 80%;
+    background-color: #2185d0;
+    border-radius: 20px;
+    height: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .blue-bac p {
+    font-size: 36px;
+    line-height: 42px;
+    color: white;
+  }
+  .name {
+    width: 80%;
+    height: 12%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .name p {
+    width: 100%;
+    /* border: 1px solid black; */
+    font-size: 36px;
+    line-height: 42px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    box-sizing: border-box;
+  }
+  .name input {
+    width: 100%;
+    height: 45%;
+  }
+  .register-input {
+    font-size: 36px;
+    outline: none;
+    border-radius: 10px;
+    background-color: #b22222;
+    border: 0px;
+    box-sizing: border-box;
+  }
+  .sumbit {
+    width: 80%;
+    height: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sumbit button {
+    font-size: 36px;
+    line-height: 42px;
+    color: white;
+    background-color: #b22222;
+    font-family: "Kanit", sans-serif;
+    border-radius: 10px;
+    border: 0px;
+    width: 40%;
+    height: 50%;
+  }
+  
