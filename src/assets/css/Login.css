@@ -86,19 +86,19 @@ a:hover {
   border: 0px;
   background-color: #b22222;
 }
-input[type="text"] {
-  font-size: 36px;
-  outline: none;
-}
+
 .email {
   margin-left: 100px;
   margin-bottom: -20px;
   margin-top: 15px;
 }
-.password {
+
+.login-password {
   margin-left: 100px;
   margin-bottom: -20px;
   margin-top: -20px;
+  font-size: 36px;
+  outline: none;
 }
 .login-register {
   display: flex;

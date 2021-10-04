@@ -1,9 +1,7 @@
 import "../assets/css/ReviewWrite.css";
 import { useState } from "react";
 function ReviewWrite() {
-  const [text, setText] = useState("");
-  const [text2, setText2] = useState("");
-  // const [imgBlob , setImgBlob] = useState([])
+     // const [imgBlob , setImgBlob] = useState([])
   const [formData , setFormData] = useState({
     reviewName : "",
     detailName : "",
@@ -71,15 +69,15 @@ function ReviewWrite() {
           <div class="label-give-point">
             <div class="point-name">ให้คะแนนย่างเนยเชียงราก</div>
             <div class="stars">
-              <input type="radio" id="one" name="rate" value="5" />
+              <input type="radio" id="one" name="rate" value="5" class='reviewwrite-input' />
               <label for="one" onClick={() => onHandleStarRating(5)}></label>
-              <input type="radio" id="two" name="rate" value="4" />
+              <input type="radio" id="two" name="rate" value="4" class='reviewwrite-input' />
               <label for="two" onClick={() => onHandleStarRating(4)}></label>
-              <input type="radio" id="three" name="rate" value="3"/>
+              <input type="radio" id="three" name="rate" value="3" class='reviewwrite-input' />
               <label for="three" onClick={() => onHandleStarRating(3)}></label>
-              <input type="radio" id="four" name="rate" value="2" />
+              <input type="radio" id="four" name="rate" value="2" class='reviewwrite-input' />
               <label for="four" onClick={() => onHandleStarRating(2)}></label>
-              <input type="radio" id="five" name="rate" value="1" />
+              <input type="radio" id="five" name="rate" value="1" class='reviewwrite-input' />
               <label for="five" onClick={() => onHandleStarRating(1)}></label>
               <span class="result"></span>
             </div>

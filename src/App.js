@@ -5,6 +5,7 @@ import Contract from "./pages/Contract";
 import ReviewCard from "./pages/ReviewCard";
 import CategoryRes from "./pages/CategoryRes";
 import ReviewWrite from "./pages/ReviewWrite";
+import AdminUpdate from "./pages/AdminUpdate";
 import Login from "./pages/Login";
 import "./assets/css/main.css";
 import ReviewRes from "./pages/ReviewRes";
@@ -25,6 +26,7 @@ function App() {
           <Route path="/Contract" component={Contract} />
           <Route path="/Login" component={Login} />
           <Route path="/Register" component={Register} />
+          <Route path="/AdminUpdate" component={AdminUpdate} />
         </Switch>
       </BrowserRouter>
     </div>
