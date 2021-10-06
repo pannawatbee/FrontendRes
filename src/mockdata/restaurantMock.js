@@ -1,5 +1,5 @@
 import Hottobun from "../assets/images/Hottobun.jpg";
-import copper from "../assets/images/copper.png";
+import copper from "../assets/images/copper.jpg";
 import starbuck from "../assets/images/starbuck.jpg";
 import blackcan from "../assets/images/blackcan.jpg";
 import sawadee from "../assets/images/sawadee.jpg";

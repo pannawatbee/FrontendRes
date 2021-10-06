@@ -2,7 +2,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import "../assets/css/HomePage.css";
 import Hottobun from "../assets/images/Hottobun.jpg";
-import Copper from "../assets/images/copper.png"
+import Copper from "../assets/images/copper.jpg"
 import Starbuck from "../assets/images/starbuck.jpg"
 import { restaurantMock } from "../mockdata/restaurantMock";
 import CarouselCard from "../components/home/CarouselCard";

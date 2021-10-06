@@ -4,6 +4,7 @@ import "../../assets/css/HomePage.css";
 // import {Route, Switch} from "react-router";
 import { Link } from "react-router-dom";
 function Header() {
+  
   return (
     <div className="navigator">
       <div className="nav-left">
@@ -14,6 +15,7 @@ function Header() {
       <div className="nav-right">
         <Link to="/" className="a-right">
           PANNAWAT ANANCHAITAM
+          {}
         </Link>
         <Link to="/Contract" className="a-right">
           ติดต่อเรา
