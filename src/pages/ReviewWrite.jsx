@@ -1,4 +1,5 @@
 import "../assets/css/ReviewWrite.css";
+import axios from "axios";
 import { useState } from "react";
 function ReviewWrite() {
      // const [imgBlob , setImgBlob] = useState([])
@@ -6,25 +7,20 @@ function ReviewWrite() {
     reviewName : "",
     detailName : "",
     starRating : "",
-    imgBlob : []
+    imgBlob : null
   })
 
   const updateList = function () {
     var input = document.getElementById("fileUploader");
     var output = document.getElementById("divFiles");
     var HTML = "";
-    var arrBlob = []
     for (var i = 0; i < input.files.length; ++i) {
       console.log(input.files.item(i));
       let data = URL.createObjectURL(input.files.item(i));
-      console.log(data);
-      urlToBase64(data , function(dataUrl){
-        arrBlob.push(dataUrl)
-      })
       HTML += `<img class="img-restaurant" src="${data}" alt=""></img>`;
     }
     setFormData({...formData , 
-      imgBlob : arrBlob
+      imgBlob : input.files.item(0)
     })
     output.innerHTML = HTML;
   };
@@ -50,6 +46,16 @@ function ReviewWrite() {
   const writeReview = function () {
     //convert img to blob base64
     console.log(formData)
+    const formform = new FormData();
+    formform.append("username", formData.reviewName)
+    formform.append('detail',formData.detailName)
+    formform.append('password',formData.starRating)
+    formform.append('confirmPassword',formData.starRating)
+    formform.append("cloudinput", formData.imgBlob)
+
+    axios.post('http://localhost:8030/create-store',formform).then(res=>{
+      // setShowImage(res.data.user.password)
+    })
   }; 
 
   const onHandleStarRating = (value) => {
