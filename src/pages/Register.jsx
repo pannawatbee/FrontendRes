@@ -11,20 +11,29 @@ function Register() {
     password: "",
     confirmPassword: "",
   });
-
+  const [error, setError] = useState({});
   function validate() {
+    /// email ห้ามซ้ำ
     if (formData.password !== formData.confirmPassword) {
-      return validate2()
+      setError({ confirmPassword: "INVALID PASSWORD" });
+    } else {
+      setError({});
     }
   }
-  function validate2(){
-    return <h1 style={{color:'red'}}>Invalid password</h1>;
-  }
- 
+
   function Submit() {
-    const res = axios.post("http://localhost:8002/user", formData);
-    history.push("/Login");
-    console.log(res);
+    validate();
+    if (Object.keys(error).length === 0) {
+      axios
+        .post("http://localhost:8002/user/register", formData)
+        .then(() => {
+          history.push("/Login");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    console.log(Object.keys(error).length);
   }
   return (
     <>
@@ -78,15 +87,16 @@ function Register() {
             />
           </div>
           <div class="name">
-            <p>ยืนยันพาสเวิร์ด</p>{()=>validate2}
+            <p>ยืนยันพาสเวิร์ด</p>
+            {error.confirmPassword && <h1 style={{color:'red'}}>{error.confirmPassword}</h1>}
             <input
               type="text"
               class="register-input"
               value={formData.confirmPassword}
               onChange={(e) => {
                 setFormData({ ...formData, confirmPassword: e.target.value });
-                validate();
               }}
+              F
             />
           </div>
           <div class="sumbit">

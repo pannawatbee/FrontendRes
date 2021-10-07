@@ -4,29 +4,29 @@ import res from "../assets/images/Restaurant.png";
 import "../assets/css/CategoryRes.css";
 import { restaurantMock } from "../mockdata/restaurantMock";
 import Card from "../components/reviewres/Card";
-import {useState} from 'react'
-import { Link } from "react-router-dom";
+import { useState } from "react";
+// import { Link } from "react-router-dom";
 function CategoryRes() {
-  const [res2,setRes2]=useState(restaurantMock)
-    //  var  res2 =restaurantMock.filter(item=>item.catagory==='res')
+  const [res2, setRes2] = useState(restaurantMock);
+  //  var  res2 =restaurantMock.filter(item=>item.catagory==='res')
   // function  func1(){
   //   var res2 = restaurantMock.filter(item=>item.catagory='res')
   // }
-  const func1 =()=>{
-    let filter1  = restaurantMock.filter(item=>item.catagory==='res')
-    setRes2(filter1)
-  }
-  const func2 =()=>{
-    let filter2  = restaurantMock.filter(item=>item.catagory==='cafe')
-    setRes2(filter2)
-  }
-  const func3 =()=>{
-    let filter3  = restaurantMock.filter(item=>item.catagory==='buffet')
-    setRes2(filter3)
-  }
-  const func4 =()=>{
-    setRes2(restaurantMock)
-  }
+  const func1 = () => {
+    let filter1 = restaurantMock.filter((item) => item.catagory === "res");
+    setRes2(filter1);
+  };
+  const func2 = () => {
+    let filter2 = restaurantMock.filter((item) => item.catagory === "cafe");
+    setRes2(filter2);
+  };
+  const func3 = () => {
+    let filter3 = restaurantMock.filter((item) => item.catagory === "buffet");
+    setRes2(filter3);
+  };
+  const func4 = () => {
+    setRes2(restaurantMock);
+  };
   return (
     <>
       <div class="background-cate">
@@ -35,28 +35,25 @@ function CategoryRes() {
             <p>หมวดหมู่</p>
           </div>
           <div class="wh-ba-mid-cate">
-            <img
-              src={res}
-              alt=""
-             
-              class="img-hover1-cate" onClick={func1}
-            />
-            <img src={cafe} alt=""  class="img-hover1-cate" onClick={func2} />
-            <img
-              src={buffet}
-              alt=""
-              
-              class="img-hover1-cate" onClick={func3}
-            />
+            <img src={res} alt="" class="img-hover1-cate" onClick={func1} />
+            <img src={cafe} alt="" class="img-hover1-cate" onClick={func2} />
+            <img src={buffet} alt="" class="img-hover1-cate" onClick={func3} />
           </div>
           <div class="wh-ba-right-cate">
-            <Link href="#">
-              <p class="wh-ba-right-ptag-cate" onClick={func4}>ล้างฟิลเตอร์</p>
-            </Link>
+            <p class="wh-ba-right-ptag-cate" onClick={func4}>
+              ล้างฟิลเตอร์
+            </p>
           </div>
         </div>
         <div class="card-container-cate">
-        {res2.map(o=>(<Card name={o.restaurantName} img={o.restaurantImage} url={o.restaurantDetailLink}/>))} {/* res2 */}
+          {res2.map((o) => (
+            <Card
+              name={o.restaurantName}
+              img={o.restaurantImage}
+              url={o.restaurantDetailLink}
+            />
+          ))}{" "}
+          {/* res2 */}
           {/* <div class="card1">
             <a href="review-card.html">
               <img src="picture/Hottobun.jpg" alt="" />
