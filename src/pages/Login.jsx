@@ -17,7 +17,7 @@ function Login() {
   const Submit = async (e) => {
     try {
       e.preventDefault();
-      const res = await axios.post("http://localhost:8002/user/login", {
+      const res = await axios.post("http://localhost:8000/user/login", {
         formData,
       }); //หลังบ้านส่งมา res.json({ message: "success logged in", token });
       // console.log(res)

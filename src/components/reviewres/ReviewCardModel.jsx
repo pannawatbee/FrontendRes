@@ -1,6 +1,6 @@
 // import { Link } from "react-router-dom";
 // import { restaurantMock } from "../mockdata/restaurantMock";
-import { restaurantMock } from "../../mockdata/restaurantMock";
+// import { restaurantMock } from "../../mockdata/restaurantMock";
 function ReviewCardModel(props) {
   return (
     <div class="bac-left-card">
@@ -10,7 +10,7 @@ function ReviewCardModel(props) {
       </div>
       <div class="heading-review">
         <span class="heading">{props.reviewTitle}</span>
-        <span class="headung-reivew-star">{props.starRating}</span>
+        <span class="headung-reivew-star">{props.starRating} ดาว</span>
       </div>
       <img src={props.reviewImage} alt="" class="center" />
       <span class="detail">รายละเอียดรีวิว</span>

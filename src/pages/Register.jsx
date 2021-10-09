@@ -25,7 +25,7 @@ function Register() {
     validate();
     if (Object.keys(error).length === 0) {
       axios
-        .post("http://localhost:8002/user/register", formData)
+        .post("http://localhost:8000/user/register", formData)
         .then(() => {
           history.push("/Login");
         })

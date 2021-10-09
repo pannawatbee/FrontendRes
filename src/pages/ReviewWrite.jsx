@@ -1,14 +1,27 @@
 import "../assets/css/ReviewWrite.css";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../contexts/authContext";
+import { useHistory } from "react-router";
 function ReviewWrite() {
-     // const [imgBlob , setImgBlob] = useState([])
-  const [formData , setFormData] = useState({
-    reviewName : "",
-    detailName : "",
-    starRating : "",
-    imgBlob : null
-  })
+  const history = useHistory();
+  // const [imgBlob , setImgBlob] = useState([])
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  const [restaurantName, setRestaurantName] = useState("");
+  const [formData, setFormData] = useState({
+    reviewName: "",
+    detailName: "",
+    starRating: "",
+    imgBlob: null,
+  });
+  useEffect(() => {
+    let searchParams = new URLSearchParams(window.location.search);
+    let resId = searchParams.get("resId");
+    axios.get("http://localhost:8000/restaurant/" + resId).then((res) => {
+      setRestaurantName(res.data.resteraunt.restaurantName);
+    });
+  }, []);
 
   const updateList = function () {
     var input = document.getElementById("fileUploader");
@@ -19,9 +32,7 @@ function ReviewWrite() {
       let data = URL.createObjectURL(input.files.item(i));
       HTML += `<img class="img-restaurant" src="${data}" alt=""></img>`;
     }
-    setFormData({...formData , 
-      imgBlob : input.files.item(0)
-    })
+    setFormData({ ...formData, imgBlob: input.files.item(0) });
     output.innerHTML = HTML;
   };
   const cancelReview = function () {
@@ -44,27 +55,32 @@ function ReviewWrite() {
   // }
 
   const writeReview = function () {
-    
-    console.log(formData)
+    let searchParams = new URLSearchParams(window.location.search);
+    let resId = searchParams.get("resId");
+    console.log(formData);
     const formform = new FormData();
-    formform.append("reviewTitle", formData.reviewName)
-    formform.append('reviewDetail',formData.detailName)
-    formform.append('starRating',formData.starRating)
-     formform.append("cloudinput", formData.imgBlob)
-    
+    formform.append("reviewTitle", formData.reviewName);
+    formform.append("reviewDetail", formData.detailName);
+    formform.append("starRating", formData.starRating);
+    formform.append("cloudinput", formData.imgBlob);
+    formform.append("ResterauntId", resId);
+    formform.append("UserId", user.id);
 
-    axios.post('http://localhost:8000/create-store',formform).then(res=>{
-      // setShowImage(res.data.user.password)
-    }).catch(err=>{
-      console.dir(err)
-    })
-  }; 
+    axios
+      .post("http://localhost:8000/create-store", formform)
+      .then((res) => {
+        // setShowImage(res.data.user.password)
+        history.push("/ReviewCard?resId="+resId);
+      })
+      .catch((err) => {
+        console.dir(err);
+      });
+      
+  };
 
   const onHandleStarRating = (value) => {
-    setFormData({...formData , 
-      starRating : value
-    })
-  }
+    setFormData({ ...formData, starRating: value });
+  };
   return (
     <>
       <div class="review-write-background">
@@ -75,17 +91,47 @@ function ReviewWrite() {
             </div>
           </div>
           <div class="label-give-point">
-            <div class="point-name">ให้คะแนนย่างเนยเชียงราก</div>
+            <div class="point-name">{restaurantName}</div>
             <div class="stars">
-              <input type="radio" id="one" name="rate" value="5" class='reviewwrite-input' />
+              <input
+                type="radio"
+                id="one"
+                name="rate"
+                value="5"
+                class="reviewwrite-input"
+              />
               <label for="one" onClick={() => onHandleStarRating(5)}></label>
-              <input type="radio" id="two" name="rate" value="4" class='reviewwrite-input' />
+              <input
+                type="radio"
+                id="two"
+                name="rate"
+                value="4"
+                class="reviewwrite-input"
+              />
               <label for="two" onClick={() => onHandleStarRating(4)}></label>
-              <input type="radio" id="three" name="rate" value="3" class='reviewwrite-input' />
+              <input
+                type="radio"
+                id="three"
+                name="rate"
+                value="3"
+                class="reviewwrite-input"
+              />
               <label for="three" onClick={() => onHandleStarRating(3)}></label>
-              <input type="radio" id="four" name="rate" value="2" class='reviewwrite-input' />
+              <input
+                type="radio"
+                id="four"
+                name="rate"
+                value="2"
+                class="reviewwrite-input"
+              />
               <label for="four" onClick={() => onHandleStarRating(2)}></label>
-              <input type="radio" id="five" name="rate" value="1" class='reviewwrite-input' />
+              <input
+                type="radio"
+                id="five"
+                name="rate"
+                value="1"
+                class="reviewwrite-input"
+              />
               <label for="five" onClick={() => onHandleStarRating(1)}></label>
               <span class="result"></span>
             </div>
@@ -102,9 +148,9 @@ function ReviewWrite() {
                 name="fname"
                 value={formData.reviewName}
                 class="input"
-                onChange={(e) => setFormData({...formData , 
-                  reviewName : e.target.value
-                })}
+                onChange={(e) =>
+                  setFormData({ ...formData, reviewName: e.target.value })
+                }
               />
               <br />
               <label for="review" class="label-header">
@@ -117,9 +163,9 @@ function ReviewWrite() {
                 rows="4"
                 cols="50"
                 value={formData.detailName}
-                onChange={(e) => setFormData({...formData , 
-                  detailName : e.target.value
-                })}
+                onChange={(e) =>
+                  setFormData({ ...formData, detailName: e.target.value })
+                }
               ></textarea>
             </form>
             <div id="divFiles" class="content-img"></div>
@@ -142,7 +188,7 @@ function ReviewWrite() {
             </div>
             <div class="button-review-cancel">
               <button onClick={writeReview}>บันทึกรีวิว</button>
-              <button  onClick={cancelReview}>ยกเลิก</button>
+              <button onClick={cancelReview}>ยกเลิก</button>
             </div>
           </div>
         </div>
