@@ -2,23 +2,20 @@ import React from "react";
 import { useEffect } from "react";
 // import { Link } from "react-router-dom";
 import "../assets/css/HomePage.css";
-import Hottobun from "../assets/images/Hottobun.jpg";
-import Copper from "../assets/images/copper.jpg";
-import Starbuck from "../assets/images/starbuck.jpg";
-import { restaurantMock } from "../mockdata/restaurantMock";
+// import Hottobun from "../assets/images/Hottobun.jpg";
+// import Copper from "../assets/images/copper.jpg";
+// import Starbuck from "../assets/images/starbuck.jpg";
+// import { restaurantMock } from "../mockdata/restaurantMock";
 import CarouselCard from "../components/home/CarouselCard";
 import axios from "axios";
 import {useState} from "react";
 function HomePage() {
   const [res, setRes] = useState([])
   useEffect(() => {
-    // const  firstredender = async()=>{
-    // const res = await axios.get("http://localhost:8002/restaurant");
-    // console.log(res);
-    // console.log(res.data.resteraunt[0].restaurantImage);
-    // setRes(res.data.resteraunt)
-    // }
-    // firstredender()
+    axios.get("http://localhost:8000/restaurant/home").then((res) => {
+      console.log(res.data.resteraunt);
+      setRes(res.data.resteraunt);
+    });
   }, []);
 
   return (
@@ -35,13 +32,13 @@ function HomePage() {
         </ol>
         <div className="carousel-inner">
           {
-            restaurantMock.map((o , index) => (
-              <div className={`item ${index == 0 ? ' active' : ''}`}>
+            res.map((o , index) => (
+              <div className={`item ${index === 0 ? ' active' : ''}`}>
                 <CarouselCard
-                  name="Hottobun"
-                  img={Hottobun}
-                  detail={o.restaurantDetail}
-                  path={'ReviewCard?resId=1'}
+                  name={o.restaurantName}
+                  img={o.restaurantImage}
+                  detail={o.otherDetail}
+                  path={'ReviewCard?resId='+o.id}
                 />
               </div>
             ))

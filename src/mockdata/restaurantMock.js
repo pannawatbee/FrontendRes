@@ -1,11 +1,11 @@
 import Hottobun from "../assets/images/Hottobun.jpg";
 import copper from "../assets/images/copper.jpg";
 import starbuck from "../assets/images/starbuck.jpg";
-import blackcan from "../assets/images/blackcan.jpg";
-import sawadee from "../assets/images/sawadee.jpg";
-import santafe from "../assets/images/santafe.jpg";
-import Rolling from "../assets/images/Rolling.jpg";
-import ichiban from "../assets/images/ichiban.jpg";
+// import blackcan from "../assets/images/blackcan.jpg";
+// import sawadee from "../assets/images/sawadee.jpg";
+// import santafe from "../assets/images/santafe.jpg";
+// import Rolling from "../assets/images/Rolling.jpg";
+// import ichiban from "../assets/images/ichiban.jpg";
 const restaurantMock = [
   {
     restaurantId: 1,

@@ -11,7 +11,7 @@ function ReviewCard() {
   const [restaurantImage, setRestaurantImage] = useState("");
   const [restaurantName, setRestaurantName] = useState("");
   const [restaurantDetail, setRestaurantDetail] = useState("");
-  const [avgStarRate, setAvgStarRate] = useState("");
+  const [avgStarRate, setAvgStarRate] = useState(NaN);
   const [dataReview, setDataReview] = useState([]);
   const [openTime1, setOpenTime1] = useState("");
   const [openTime2, setOpenTime2] = useState("");
@@ -21,8 +21,9 @@ function ReviewCard() {
   const [carpark, setCarpark] = useState("");
   const [wifi, setWifi] = useState("");
   const [creditCard, setCreditCard] = useState("");
-  const [resId,setresId]= useState("");
-  console.log(getToken());
+  const [resId, setresId] = useState("");
+  const [reviewLength, setReviewLength] = useState("");
+  // console.log(getToken());
 
   useEffect(() => {
     let searchParams = new URLSearchParams(window.location.search);
@@ -45,14 +46,23 @@ function ReviewCard() {
       setCarpark(res.data.resteraunt.carpark);
       setWifi(res.data.resteraunt.wifi);
       setCreditCard(res.data.resteraunt.creditCard);
-      setresId(res.data.resteraunt.id)
+      setresId(res.data.resteraunt.id);
       // console.log(dataReview);
       // console.log(dataReview.map((item) => item.starRating));
+      axios.get("http://localhost:8000/review/" + resId).then((res) => {
+        console.log(res.data.review.length);
+        setReviewLength(res.data.review.length);
+      });
     });
   }, []);
+  function star() {
+    if (isNaN(avgStarRate)) {
+      return 0;
+    } else return avgStarRate;
+  }
 
   function handleReview() {
-    if (getToken()) return "/ReviewWrite?resId=" +resId;
+    if (getToken()) return "/ReviewWrite?resId=" + resId;
     else return "/Login";
   }
   return (
@@ -63,11 +73,11 @@ function ReviewCard() {
         <p id="restaurant-detail">{restaurantDetail}</p>
         <div class="review-point-bac">
           <div class="review-point" id="review-point">
-            {avgStarRate}
+            {star()}
           </div>
           <div class="star">★</div>
           <div class="num-review" id="num-review">
-            (5 รีวิว)
+            ({reviewLength} รีวิว)
           </div>
         </div>
         <div class="write-review-bac">
@@ -87,6 +97,7 @@ function ReviewCard() {
           <div class="bac-left">
             {dataReview.map((o) => (
               <ReviewCardModel
+                id={o.id}
                 user={o.name}
                 date={o.date}
                 reviewTitle={o.reviewTitle}
