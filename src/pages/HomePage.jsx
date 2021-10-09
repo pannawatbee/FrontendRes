@@ -12,13 +12,13 @@ import {useState} from "react";
 function HomePage() {
   const [res, setRes] = useState([])
   useEffect(() => {
-    const  firstredender = async()=>{
-    const res = await axios.get("http://localhost:8002/restaurant");
-    console.log(res);
-    console.log(res.data.resteraunt[0].restaurantImage);
-    setRes(res.data.resteraunt)
-    }
-    firstredender()
+    // const  firstredender = async()=>{
+    // const res = await axios.get("http://localhost:8002/restaurant");
+    // console.log(res);
+    // console.log(res.data.resteraunt[0].restaurantImage);
+    // setRes(res.data.resteraunt)
+    // }
+    // firstredender()
   }, []);
 
   return (
@@ -34,27 +34,18 @@ function HomePage() {
           <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
         <div className="carousel-inner">
-          <div className="item active">
-            <CarouselCard
-              name="Hottobun"
-              img={Hottobun}
-              detail={restaurantMock[0].restaurantDetail}
-            />
-          </div>
-          <div className="item">
-            <CarouselCard
-              name="Copper"
-              img={Copper}
-              detail={restaurantMock[1].restaurantDetail}
-            />
-          </div>
-          <div className="item">
-            <CarouselCard
-              name="Starbuck"
-              img={Starbuck}
-              detail={restaurantMock[2].restaurantDetail}
-            />
-          </div>
+          {
+            restaurantMock.map((o , index) => (
+              <div className={`item ${index == 0 ? ' active' : ''}`}>
+                <CarouselCard
+                  name="Hottobun"
+                  img={Hottobun}
+                  detail={o.restaurantDetail}
+                  path={'ReviewCard?resId=1'}
+                />
+              </div>
+            ))
+          }
         </div>
         <a
           className="left carousel-control"

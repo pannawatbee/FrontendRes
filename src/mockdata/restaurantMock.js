@@ -40,60 +40,60 @@ const restaurantMock = [
     restaurantReviewCount: 5,
     catagory:'cafe'
   },
-  {
-    restaurantId: 4,
-    restaurantName: "Black Canyon",
-    restaurantImage: blackcan,
-    restaurantDetailLink: "ReviewCard?resId=4",
-    restaurantDetail:
-      "เป็นร้านกาแฟที่มีสาขามากที่สุดในประเทศไทย และเป็นแบรนด์ท้องถิ่นที่แข็งแกร่งที่สุดของประเทศ เพราะใช้เมล็ดกาแฟสดจากแหล่งเพาะปลูกที่ดีที่สุดของโลก",
-    restaurantRating: 3.9,
-    restaurantReviewCount: 4,
-    catagory:'cafe'
-  },
-  {
-    restaurantId: 5,
-    restaurantName: "Sawasdee",
-    restaurantImage: sawadee,
-    restaurantDetailLink: "ReviewCard?resId=5",
-    restaurantDetail:
-      "จากร้านก๋วยเตี๋ยวเรือเอี้ยมจุ๊นในคลองรังสิต ผ่านประสบการณ์อันยาวนานกว่า 16 ปี วันนี้ “สวัสดี” ขอต้อนรับทุกท่านด้วยความอบอุ่น",
-    restaurantRating: 3.9,
-    restaurantReviewCount: 4,
-    catagory:'res'
-  },
-  {
-    restaurantId: 6,
-    restaurantName: "Santa Fe'Steak",
-    restaurantImage: santafe,
-    restaurantDetailLink: "ReviewCard?resId=6",
-    restaurantDetail:
-      "สเต็ก Santafe ที่ส่งต่อความอร่อยของ Steak(สเต็ก) ชิ้นโตรสชาติเข้มผ่านขบวนรถไฟแห่งความอร่อยมายังท่านทุกวัน",
-    restaurantRating: 3.9,
-    restaurantReviewCount: 4,
-    catagory:'res'
-  },
-  {
-    restaurantId: 7,
-    restaurantName: "Rolling Roasters Futuristic Coffee ",
-    restaurantImage: Rolling,
-    restaurantDetailLink: "ReviewCard?resId=7",
-    restaurantDetail:
-      "Rolling roaster futuristic coffee ร้านกาแฟชื่อดังที่ตั้งอยู่ริมถนนพุทธมณฑลสาย 4 พรานนกเส้นตัดใหม่ ตอนเปิดใหม่ๆคิวยาวมาตั้งแต่ 07:00 น",
-    restaurantRating: 3.9,
-    restaurantReviewCount: 4,
-    catagory:'cafe'
-  },
-  {
-    restaurantId: 8,
-    restaurantName: "Ichiban Ramen",
-    restaurantImage: ichiban,
-    restaurantDetailLink: "ReviewCard?resId=8",
-    restaurantDetail:
-      "ฮะจิบัง ราเมน (Hachiban Ramen) หรือร้านราเมนหมายเลข 8 ก่อกำเนิดขึ้นสาขาแรก ในปี ค.ศ. 1967 บนถนน หลวงสาย 8 เขตคางะ เมืองอิชิกาวา ประเทศญี่ปุ่น ด้วยรสชาติของน้ำซุปเข้มข้น และกลมกล่อม เข้ากับเส้นราเมนเหนียวนุ่ม ทำให้ชาวญี่ปุ่นชื่นชอบกลายเป็นร้านบะหมี่ที่ได้รับความนิยมเพิ่มขึ้นตามลำดับ จนกลายมาเป็นราเมนที่ชื่นชอบของคนญี่ปุ่น",
-    restaurantRating: 3.9,
-    restaurantReviewCount: 4,
-    catagory:'res'
-  },
+  // {
+  //   restaurantId: 4,
+  //   restaurantName: "Black Canyon",
+  //   restaurantImage: blackcan,
+  //   restaurantDetailLink: "ReviewCard?resId=4",
+  //   restaurantDetail:
+  //     "เป็นร้านกาแฟที่มีสาขามากที่สุดในประเทศไทย และเป็นแบรนด์ท้องถิ่นที่แข็งแกร่งที่สุดของประเทศ เพราะใช้เมล็ดกาแฟสดจากแหล่งเพาะปลูกที่ดีที่สุดของโลก",
+  //   restaurantRating: 3.9,
+  //   restaurantReviewCount: 4,
+  //   catagory:'cafe'
+  // },
+  // {
+  //   restaurantId: 5,
+  //   restaurantName: "Sawasdee",
+  //   restaurantImage: sawadee,
+  //   restaurantDetailLink: "ReviewCard?resId=5",
+  //   restaurantDetail:
+  //     "จากร้านก๋วยเตี๋ยวเรือเอี้ยมจุ๊นในคลองรังสิต ผ่านประสบการณ์อันยาวนานกว่า 16 ปี วันนี้ “สวัสดี” ขอต้อนรับทุกท่านด้วยความอบอุ่น",
+  //   restaurantRating: 3.9,
+  //   restaurantReviewCount: 4,
+  //   catagory:'res'
+  // },
+  // {
+  //   restaurantId: 6,
+  //   restaurantName: "Santa Fe'Steak",
+  //   restaurantImage: santafe,
+  //   restaurantDetailLink: "ReviewCard?resId=6",
+  //   restaurantDetail:
+  //     "สเต็ก Santafe ที่ส่งต่อความอร่อยของ Steak(สเต็ก) ชิ้นโตรสชาติเข้มผ่านขบวนรถไฟแห่งความอร่อยมายังท่านทุกวัน",
+  //   restaurantRating: 3.9,
+  //   restaurantReviewCount: 4,
+  //   catagory:'res'
+  // },
+  // {
+  //   restaurantId: 7,
+  //   restaurantName: "Rolling Roasters Futuristic Coffee ",
+  //   restaurantImage: Rolling,
+  //   restaurantDetailLink: "ReviewCard?resId=7",
+  //   restaurantDetail:
+  //     "Rolling roaster futuristic coffee ร้านกาแฟชื่อดังที่ตั้งอยู่ริมถนนพุทธมณฑลสาย 4 พรานนกเส้นตัดใหม่ ตอนเปิดใหม่ๆคิวยาวมาตั้งแต่ 07:00 น",
+  //   restaurantRating: 3.9,
+  //   restaurantReviewCount: 4,
+  //   catagory:'cafe'
+  // },
+  // {
+  //   restaurantId: 8,
+  //   restaurantName: "Ichiban Ramen",
+  //   restaurantImage: ichiban,
+  //   restaurantDetailLink: "ReviewCard?resId=8",
+  //   restaurantDetail:
+  //     "ฮะจิบัง ราเมน (Hachiban Ramen) หรือร้านราเมนหมายเลข 8 ก่อกำเนิดขึ้นสาขาแรก ในปี ค.ศ. 1967 บนถนน หลวงสาย 8 เขตคางะ เมืองอิชิกาวา ประเทศญี่ปุ่น ด้วยรสชาติของน้ำซุปเข้มข้น และกลมกล่อม เข้ากับเส้นราเมนเหนียวนุ่ม ทำให้ชาวญี่ปุ่นชื่นชอบกลายเป็นร้านบะหมี่ที่ได้รับความนิยมเพิ่มขึ้นตามลำดับ จนกลายมาเป็นราเมนที่ชื่นชอบของคนญี่ปุ่น",
+  //   restaurantRating: 3.9,
+  //   restaurantReviewCount: 4,
+  //   catagory:'res'
+  // },
 ];
 export { restaurantMock };

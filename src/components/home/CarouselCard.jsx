@@ -1,4 +1,5 @@
 import { Component , useState } from "react";
+import { Link } from "react-router-dom";
 // react hooks react new version
 // 1. เบากว่า
 // 2. ง่ายกว่า
@@ -15,10 +16,9 @@ function CarouselCard(props){
             <p>
                 {props.detail}
             </p>
-            
-            <a href="#">
+            <Link to={props.path} class="improve-res">
                 <button>อ่านเพิ่มเติม</button>
-            </a>
+            </Link>
             </div>
       </div>
     )
