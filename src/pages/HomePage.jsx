@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 // import { Link } from "react-router-dom";
 import "../assets/css/HomePage.css";
-// import Hottobun from "../assets/images/Hottobun.jpg";
+import Hottobun from "../assets/images/Hottobun.jpg";
 import Copper from "../assets/images/copper.jpg";
 import Starbuck from "../assets/images/starbuck.jpg";
 import { restaurantMock } from "../mockdata/restaurantMock";
@@ -37,7 +37,7 @@ function HomePage() {
           <div className="item active">
             <CarouselCard
               name="Hottobun"
-              img={res[0].restaurantImage}
+              img={Hottobun}
               detail={restaurantMock[0].restaurantDetail}
             />
           </div>

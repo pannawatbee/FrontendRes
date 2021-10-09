@@ -29,32 +29,34 @@ function ReviewWrite() {
     output.innerHTML = "";
   };
 
-  const urlToBase64 = (url, callback) => {
-    var xhr = new XMLHttpRequest();
-    xhr.onload = function() {
-      var reader = new FileReader();
-      reader.onloadend = function() {
-        callback(reader.result);
-      }
-      reader.readAsDataURL(xhr.response);
-    };
-    xhr.open('GET', url);
-    xhr.responseType = 'blob';
-    xhr.send();
-  }
+  // const urlToBase64 = (url, callback) => {
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.onload = function() {
+  //     var reader = new FileReader();
+  //     reader.onloadend = function() {
+  //       callback(reader.result);
+  //     }
+  //     reader.readAsDataURL(xhr.response);
+  //   };
+  //   xhr.open('GET', url);
+  //   xhr.responseType = 'blob';
+  //   xhr.send();
+  // }
 
   const writeReview = function () {
-    //convert img to blob base64
+    
     console.log(formData)
     const formform = new FormData();
-    formform.append("username", formData.reviewName)
-    formform.append('detail',formData.detailName)
-    formform.append('password',formData.starRating)
-    formform.append('confirmPassword',formData.starRating)
-    formform.append("cloudinput", formData.imgBlob)
+    formform.append("reviewTitle", formData.reviewName)
+    formform.append('reviewDetail',formData.detailName)
+    formform.append('starRating',formData.starRating)
+     formform.append("cloudinput", formData.imgBlob)
+    
 
-    axios.post('http://localhost:8030/create-store',formform).then(res=>{
+    axios.post('http://localhost:8000/create-store',formform).then(res=>{
       // setShowImage(res.data.user.password)
+    }).catch(err=>{
+      console.dir(err)
     })
   }; 
 
