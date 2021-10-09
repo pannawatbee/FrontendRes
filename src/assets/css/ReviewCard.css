@@ -132,23 +132,22 @@ body {
   
   .reviewcard-background {
     background-color: rgba(196, 196, 196, 0.69);
-    height: 1200px;
+    min-height: 1200px;
     width: 100%;
     display: flex;
     justify-content: center;
   }
   .bac-mid {
     width: 1740px;
-    height: 960px;
     /* border: 1px solid green; */
     position: relative;
-    top: 80px;
+    /* top: 80px; */
     display: flex;
     justify-content: space-between;
   }
   .bac-left {
     width: 65%;
-    height: 100%;
+    /* height: 100%; */
     /* border: 1px solid red; */
     /* background-color: white; */
     position: relative;
@@ -156,21 +155,19 @@ body {
   
   .bac-left-card {
     width: 65%;
-    height: 80%;
+    min-height: 240px;
     /* border: 1px solid red; */
-    /* position: absolute; */
     background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
   }
   
   .bac-right {
     width: 30%;
-    height: 50%;
-    /* border: 1px solid red; */
     background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
     padding-left: 20px;
+    align-self: flex-start;
+    padding: 20px;
   }
   .bac-right-4 {
     /* border: 1px solid red; */
