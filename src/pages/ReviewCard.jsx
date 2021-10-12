@@ -4,10 +4,15 @@ import ReviewCardModel from "../components/reviewres/ReviewCardModel";
 import checkbox from "../assets/images/checkbox-icon.jpg";
 // import uncheckbox from "../assets/images/uncheckbox-icon.jpg";
 import { getToken } from "../services/localStorage";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/authContext";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 function ReviewCard() {
+  const history = useHistory();
+  const { user } = useContext(AuthContext);
   const [restaurantImage, setRestaurantImage] = useState("");
   const [restaurantName, setRestaurantName] = useState("");
   const [restaurantDetail, setRestaurantDetail] = useState("");
@@ -24,6 +29,7 @@ function ReviewCard() {
   const [resId, setresId] = useState("");
   const [reviewLength, setReviewLength] = useState("");
   // console.log(getToken());
+
 
   useEffect(() => {
     let searchParams = new URLSearchParams(window.location.search);
@@ -51,6 +57,7 @@ function ReviewCard() {
       // console.log(dataReview.map((item) => item.starRating));
       axios.get("http://localhost:8000/review/" + resId).then((res) => {
         console.log(res.data.review.length);
+        console.log(res.data.review)
         setReviewLength(res.data.review.length);
       });
     });
@@ -65,6 +72,22 @@ function ReviewCard() {
     if (getToken()) return "/ReviewWrite?resId=" + resId;
     else return "/Login";
   }
+  function handleEdit() {
+    history.push("/AdminUpdate?resId="+ resId);
+  }
+  function checkUser() {
+    if (user) {
+      if (user.userType === "admin") {
+        return (
+          <button class="edit" onClick={handleEdit}>
+            UPDATE
+          </button>
+        );
+        
+      } else return null;
+    }
+  }
+
   return (
     <>
       <div class="food-background" id="food-background">
@@ -104,12 +127,17 @@ function ReviewCard() {
                 starRating={o.starRating}
                 reviewImage={o.reviewImage}
                 reviewDetail={o.reviewDetail}
+                upDateAt={o.updatedAt}
               />
             ))}
           </div>
           <div class="bac-right">
             <div class="bac-right-1">
+              {/* <button class="edit" onClick={handleEdit}>
+                EDIT
+              </button> */}{checkUser()}
               <div style={{ fontweight: "bold" }}>เวลาเปิดร้าน :</div>
+
               <span>
                 {openTime1}-{openTime2}
               </span>

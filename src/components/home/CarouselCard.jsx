@@ -1,4 +1,4 @@
-import { Component , useState } from "react";
+// import { Component , useState } from "react";
 import { Link } from "react-router-dom";
 // react hooks react new version
 // 1. เบากว่า
@@ -9,7 +9,7 @@ function CarouselCard(props){
             <img
             src={props.img}
             alt="Hottobun"
-            style={{ width: "100%", height: "820px", opacity: "0.8" }}
+            style={{ width: "100%", height: "820px", opacity: "0.5" }}
             />
             <div className="text">
             <h3>{props.name}</h3>
@@ -17,7 +17,7 @@ function CarouselCard(props){
                 {props.detail}
             </p>
             <Link to={props.path} class="improve-res">
-                <button>อ่านเพิ่มเติม</button>
+                <button style={{ width: "10%"}}>อ่านเพิ่มเติม</button>
             </Link>
             </div>
       </div>

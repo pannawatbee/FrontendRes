@@ -4,8 +4,23 @@ import "../assets/css/ReviewRes.css";
 import Card from "../components/reviewres/Card";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/authContext";
 import axios from "axios";
 function ReviewRes() {
+  const { user } = useContext(AuthContext);
+  function checkUser() {
+    if (user) {
+      if (user.userType === "admin") {
+        return (
+          <Link to='AdminAddRes'>
+            <p>เพิ่มร้านอาหาร</p>
+          </Link>
+        );
+        
+      } else return null;
+    }
+  }
   const [count, setCount] = useState(6);
   const [resteraunt, setResteraunt] = useState([]);
   let restaurantSlice = resteraunt.slice(0, count);
@@ -26,12 +41,10 @@ function ReviewRes() {
           <p>รีวิวร้านอาหาร</p>
         </div>
         <div class="wh-ba-right">
-          <a href="user-add-res.html">
-            <p>เพิ่มร้านอาหาร</p>
-          </a>
+          {checkUser()}
           <Link to="#">
             <p
-              class="wh-ba-right-ptag"
+              class= {`${user.userType==="admin"?"wh-ba-right-ptag":"wh-ba-right-ptag2"}`}
               onClick={handleRestaurantList}
             >
               ดูทั้งหมด

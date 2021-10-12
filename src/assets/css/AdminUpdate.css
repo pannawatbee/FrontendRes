@@ -328,7 +328,7 @@ textarea {
   height: 325px;
   padding: 2vw 2vw;
 }
-.white-background-adminupdate {
+.white-background-adminupdate2 {
   width: 1660px;
   height: 120px;
   background-color: white;
@@ -340,13 +340,13 @@ textarea {
   margin-top: 30px;
   width: 90%;
 }
-.wh-ba-left-adminupdate {
-  width: 20%;
+.wh-ba-left-adminupdate2 {
+  /* width: 20%; */
   height: 120px;
   display: flex;
   align-items: center;
 }
-.wh-ba-left-adminupdate p {
+.wh-ba-left-adminupdate2 p {
   font-size: 50px;
   line-height: 59px;
   color: #000000;
@@ -354,14 +354,16 @@ textarea {
   margin-left: 70px;
   height: 120px;
 }
-.wh-ba-right-adminupdate {
-  width: 100%;
+.wh-ba-right-adminupdate2 {
+  /* width: 100%; */
+  margin: 0px;
   height: 120px;
   display: flex;
   align-items: center;
-  margin-left: 350px;
+  margin-right: -43%;
+  /* margin-left: 350px; */
 }
-.wh-ba-right-adminupdate p {
+.wh-ba-right-adminupdate2 p {
   font-size: 50px;
   line-height: 59px;
   color: #000000;
@@ -374,6 +376,8 @@ textarea {
 
 .wh-ba-right-ptag-adminupdate {
   margin-left: 0px;
+  width: 1200px;
+  text-align: center;
 }
 
 .add-res {
@@ -396,6 +400,7 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
+
   /* margin-left: 20px; */
   /* margin-right: 20px; */
   border-radius: 20px;

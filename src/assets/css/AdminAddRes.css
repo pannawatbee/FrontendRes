@@ -360,6 +360,7 @@ body {
     display: flex;
     align-items: center;
     margin-left: 350px;
+    margin-right: -75%;
   }
   .wh-ba-right-adminupdate p {
     font-size: 50px;
@@ -377,7 +378,7 @@ body {
   }
   
   .admin-add-res {
-    width: 35%;
+    width: 25%;
     padding: 0px;
     background-color: rgba(250, 188, 116, 1);
     height: 100%;

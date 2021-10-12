@@ -17,7 +17,7 @@ function Header() {
   }
   console.log(user);
   return (
-    <div className="navigator">
+    <div className="navigator" style={{ opacity:0.85}}>
       <div className="nav-left">
         <Link to="/">หน้าแรก</Link>
         <Link to="/ReviewRes">รีวิวร้านอาหาร</Link>

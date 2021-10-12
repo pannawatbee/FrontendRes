@@ -2,30 +2,49 @@ import buffet from "../assets/images/Buffet.png";
 import cafe from "../assets/images/Cafe.png";
 import res from "../assets/images/Restaurant.png";
 import "../assets/css/CategoryRes.css";
-import { restaurantMock } from "../mockdata/restaurantMock";
+// import { restaurantMock } from "../mockdata/restaurantMock";
 import Card from "../components/reviewres/Card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 // import { Link } from "react-router-dom";
 function CategoryRes() {
-  const [res2, setRes2] = useState(restaurantMock);
+  const [resteraunt, setResteraunt] = useState([]);
+  const [sliceres, setSliceRes] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:8000/restaurant").then((res) => {
+      console.log(res.data.resteraunt);
+      setResteraunt(res.data.resteraunt);
+      setSliceRes(res.data.resteraunt)
+    });
+  }, []);
+
+  // const [res2, setRes2] = useState(restaurantMock);
   //  var  res2 =restaurantMock.filter(item=>item.catagory==='res')
   // function  func1(){
   //   var res2 = restaurantMock.filter(item=>item.catagory='res')
   // }
   const func1 = () => {
-    let filter1 = restaurantMock.filter((item) => item.catagory === "res");
-    setRes2(filter1);
+    let filter1 = resteraunt.filter(
+      (item) => item.restaurantCategory === "res"
+    );
+    // console.log(filter1)
+    setSliceRes(filter1);
   };
   const func2 = () => {
-    let filter2 = restaurantMock.filter((item) => item.catagory === "cafe");
-    setRes2(filter2);
+    let filter2 = resteraunt.filter(
+      (item) => item.restaurantCategory === "cafe"
+    );
+    // console.log(filter2)
+    setSliceRes(filter2);
   };
   const func3 = () => {
-    let filter3 = restaurantMock.filter((item) => item.catagory === "buffet");
-    setRes2(filter3);
+    let filter3 = resteraunt.filter(
+      (item) => item.restaurantCategory === "buffet"
+    );
+    setSliceRes(filter3);
   };
   const func4 = () => {
-    setRes2(restaurantMock);
+    setSliceRes(resteraunt);
   };
   return (
     <>
@@ -46,11 +65,11 @@ function CategoryRes() {
           </div>
         </div>
         <div class="card-container-cate">
-          {res2.map((o) => (
+          {sliceres.map((o) => (
             <Card
               name={o.restaurantName}
               img={o.restaurantImage}
-              url={o.restaurantDetailLink}
+              url={"ReviewCard?resId=" + o.id}
             />
           ))}{" "}
           {/* res2 */}

@@ -1,43 +1,45 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+// import { Link } from "react-router-dom";
+import axios from "axios";
+import { useHistory } from "react-router";
+import { AuthContext } from "../contexts/authContext";
+import { useState, useContext  } from "react";
 import "../assets/css/AdminAddRes.css";
 function AdminAddRes() {
-  const [formData, setFormData] = useState({
-    restaurantName: "",
-    carPark: "",
-    wifi: "",
-    creditCard: "",
-    openTime1: "",
-    openTime2: "",
-    openDay: "",
-    priceRange: "",
-    category: "",
-    restaurantLocation: "",
-    restaurantDetail: "",
-    imgBlob: "",
-  });
+  const { user } = useContext(AuthContext);
+  const history = useHistory();
+  const [restaurantName, setRestaurantName] = useState("");
+  const [carPark, setCarPark] = useState(false);
+  const [wifi, setWifi] = useState(false);
+  const [creditCard, setCreditCard] = useState(false);
+  const [openTime1, setOpenTime1] = useState("");
+  const [openTime2, setOpenTime2] = useState("");
+  const [openDay, setOpenDay] = useState("");
+  const [priceRange, setPriceRange] = useState("");
+  const [category, setCategory] = useState("");
+  const [restaurantLocation, setRestaurantLocation] = useState("");
+  const [restaurantDetail, setRestaurantDetail] = useState("");
+  const [imgBlob, setImgBlob] = useState([]);
 
-  // const updateList =function(e){
-  //     e.preventDefault();
-  //     setFormData
-  // }
-  // const updateList = function () {
-  //   var input = document.getElementById("fileUploader");
-  //   var output = document.getElementById("divFiles");
-  //   var HTML = "";
-  //   var arrBlob = [];
-  //   for (var i = 0; i < input.files.length; ++i) {
-  //     console.log(input.files.item(i));
-  //     let data = URL.createObjectURL(input.files.item(i));
-  //     console.log(data);
-  //     // urlToBase64(data, function (dataUrl) {
-  //     //   arrBlob.push(dataUrl);
-  //     // });
-  //     HTML += `<img class="img-restaurant" src="${data}" alt=""></img>`;
-  //   }
-  //   setFormData({ ...formData, imgBlob: arrBlob });
-  //   output.innerHTML = HTML;
-  // };
+   const updateList = function () {
+    var input = document.getElementById("fileUploader");
+    var output = document.getElementById("divFiles");
+    var HTML = "";
+    for (var i = 0; i < input.files.length; ++i) {
+      console.log(input.files.item(i));
+      let data = URL.createObjectURL(input.files.item(i));
+      console.log(data);
+      HTML += `<img class="img-restaurant" src="${data}" alt=""></img>`;
+    }
+    // setFormData({ ...formData, imgBlob: input.files.item(0) });
+    setImgBlob(input.files.item(0)); //ส่งไปหลังบ้าน
+
+    output.innerHTML = HTML;
+  };
+  function handleChangeCategory(e) {
+    console.log(e.target.value);
+    console.log(e);
+    setCategory(e.target.value)
+  }
   // const urlToBase64 = (url, callback) => {
   //   var xhr = new XMLHttpRequest();
   //   xhr.onload = function () {
@@ -52,32 +54,56 @@ function AdminAddRes() {
   //   xhr.send();
   // };
   const writeReview = function () {
-    //convert img to blob base64
-    console.log(formData);
+    
+    // console.log(formData);
+    const formform = new FormData();
+    formform.append("restaurantName", restaurantName);
+    formform.append("carpark", carPark);
+    formform.append("wifi", wifi);
+    formform.append("creditCard", creditCard);
+    formform.append("openingTime1", openTime1);
+    formform.append("openingTime2", openTime2);
+    formform.append("openDay", openDay);
+    formform.append("priceRange", priceRange);
+    formform.append("restaurantCategory", category);
+    formform.append("restaurantLocation", restaurantLocation);
+    formform.append("otherDetail", restaurantDetail);
+    formform.append("createType", user.userType);
+    formform.append("UserId", user.id);
+    formform.append("cloudinput", imgBlob);
+
+    axios
+      .post("http://localhost:8000/create-store-res", formform)
+      .then((res) => {
+        // console.log(555);
+
+        // console.log(res);
+        history.push("/ReviewRes");
+      })
+      .catch((err) => {
+        console.dir(err);
+      });
   };
   const cancelReview = function () {
+    let searchParams = new URLSearchParams(window.location.search);
+    let resId = searchParams.get("resId");
     var output = document.getElementById("divFiles");
     output.innerHTML = "";
+    history.push("/ReviewCard?resId=" + resId);
   };
   //    const test =function(){
   //        console.log('55')
   //    }
   return (
     <div class="background-adminupdate">
-      <div class="white-background-adminupdate">
-        <div class="wh-ba-left-adminupdate">
+      <div class="white-background-adminupdate2">
+        <div class="wh-ba-left-adminupdate2">
           <p>จัดการ</p>
         </div>
-        <div class="wh-ba-right-adminupdate">
-          <Link to='/AdminAddRes'class="admin-add-res">
-            <p>เพิ่มร้านอาหาร</p>
-          </Link>
-          <Link to='/AdminAddRes'class="admin-up-res">
-            <p class="wh-ba-right-ptag-adminupdate">อัพเดทร้านอาหาร</p>
-          </Link>
-          <Link to='/AdminAddRes' class="improve-res">
-            <p class="wh-ba-right-ptag-adminupdate">อนุมัติร้านอาหาร</p>
-          </Link>
+        <div class="wh-ba-right-adminupdate2">
+          <a href="admin-update1.html" class="up-res">
+            <p class="wh-ba-right-ptag-adminupdate">เพิ่มร้านอาหาร</p>
+          </a>
         </div>
       </div>
 
@@ -86,10 +112,8 @@ function AdminAddRes() {
           <p>ชื่อร้านอาหาร</p>
           <input
             type="text"
-            value={formData.restaurantName}
-            onChange={(e) =>
-              setFormData({ ...formData, restaurantName: e.target.value })
-            }
+            value={restaurantName}
+            onChange={(e) => setRestaurantName(e.target.value)}
           />
         </div>
         <div class="content-bc-2">
@@ -101,9 +125,10 @@ function AdminAddRes() {
                   type="checkbox"
                   id="carpark"
                   name="carpark"
-                  value={formData.carPark}
+                  checked={carPark}
                   onClick={(e) =>
-                    setFormData({ ...formData, carPark: e.target.value })
+                    // setFormData({ ...formData, carPark: e.target.checked })
+                    setCarPark(e.target.checked)
                   }
                 />
                 <label for="carpark" class="adminupdate-text">
@@ -116,10 +141,8 @@ function AdminAddRes() {
                   type="checkbox"
                   id="wifi"
                   name="wifi"
-                  value={formData.wifi}
-                  onClick={(e) =>
-                    setFormData({ ...formData, wifi: e.target.value })
-                  }
+                  checked={wifi}
+                  onClick={(e) => setWifi(e.target.checked)}
                 />
                 <label for="wifi" class="adminupdate-text">
                   Wi-Fi
@@ -131,10 +154,8 @@ function AdminAddRes() {
                   type="checkbox"
                   id="creditcard"
                   name="creditcard"
-                  value={formData.creditCard}
-                  onClick={(e) =>
-                    setFormData({ ...formData, creditCard: e.target.value })
-                  }
+                  checked={creditCard}
+                  onClick={(e) => setCreditCard(e.target.checked)}
                 />
                 <label for="creditcard" class="adminupdate-text">
                   บัตรเครดิต
@@ -150,29 +171,23 @@ function AdminAddRes() {
               <input
                 type="text"
                 class="open-close-range-input"
-                value={formData.openTime1}
-                onChange={(e) =>
-                  setFormData({ ...formData, openTime1: e.target.value })
-                }
+                value={openTime1}
+                onChange={(e) => setOpenTime1(e.target.value)}
               />
               <span class="open-close-range-span">-</span>
               <input
                 type="text"
                 class="open-close-range-input"
-                value={formData.openTime2}
-                onChange={(e) =>
-                  setFormData({ ...formData, openTime2: e.target.value })
-                }
+                value={openTime2}
+                onChange={(e) => setOpenTime2(e.target.value)}
               />
             </div>
             <p class="openday">เปิดวัน</p>
             <input
               type="text"
               class="openday-input"
-              value={formData.openDay}
-              onChange={(e) =>
-                setFormData({ ...formData, openDay: e.target.value })
-              }
+              value={openDay}
+              onChange={(e) => setOpenDay(e.target.value)}
             />
           </div>
           <div class="content-bc-2-3">
@@ -181,10 +196,8 @@ function AdminAddRes() {
               <input
                 type="text"
                 class="cost-range-input"
-                value={formData.priceRange}
-                onChange={(e) =>
-                  setFormData({ ...formData, priceRange: e.target.value })
-                }
+                value={priceRange}
+                onChange={(e) => setPriceRange(e.target.value)}
               />
             </div>
 
@@ -196,31 +209,15 @@ function AdminAddRes() {
               <label for="category" class="category-label">
                 หมวดหมู่:
               </label>
-              <select id="category" class="category-option">
-                <option
-                  value="Restaurant"
-                  onClick={(e) =>
-                    setFormData({ ...formData, category: e.target.value })
-                  }
-                >
-                  Restaurant
-                </option>
-                <option
-                  value="Cafe"
-                  onClick={(e) =>
-                    setFormData({ ...formData, category: e.target.value })
-                  }
-                >
-                  Cafe
-                </option>
-                <option
-                  value="Buffet"
-                  onClick={(e) =>
-                    setFormData({ ...formData, category: e.target.value })
-                  }
-                >
-                  Buffet
-                </option>
+              <select
+                id="category"
+                class="category-option"
+                value={category}
+                onChange={handleChangeCategory}
+              >
+                <option value="res">Restaurant</option>
+                <option value="cafe">Cafe</option>
+                <option value="buffet">Buffet</option>
               </select>
             </div>
           </div>
@@ -232,10 +229,8 @@ function AdminAddRes() {
               cols="30"
               rows="10"
               class="store-location-detial"
-              value={formData.restaurantLocation}
-              onChange={(e) =>
-                setFormData({ ...formData, restaurantLocation: e.target.value })
-              }
+              value={restaurantLocation}
+              onChange={(e) => setRestaurantLocation(e.target.value)}
             ></textarea>
           </div>
         </div>
@@ -247,10 +242,8 @@ function AdminAddRes() {
             cols="30"
             rows="10"
             class="more-detail-area"
-            value={formData.restaurantDetail}
-            onChange={(e) =>
-              setFormData({ ...formData, restaurantDetail: e.target.value })
-            }
+            value={restaurantDetail}
+            onChange={(e) => setRestaurantDetail(e.target.value)}
           ></textarea>
         </div>
 
@@ -270,7 +263,8 @@ function AdminAddRes() {
               name="fileUploader"
               type="file"
               multiple="multiple"
-              // onChange={updateList}
+              onChange={updateList}
+              // value={imgBlob}
             />
           </div>
           <div class="button-review-cancel-adminupdate">
