@@ -89,4 +89,8 @@ body {
   .item {
     opacity: 0.8;
   }
-  
+  @media (max-width:730px){
+    .text-detail{
+      font-size: 15px;
+    }
+  }

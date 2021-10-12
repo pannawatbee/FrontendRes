@@ -48,7 +48,7 @@ function ReviewCardModel(props) {
   return (
     <div class="bac-left-card" id={`delete-${props.id}`}>
       <div class="name-date">
-        <span class="name">pannawat</span>
+        <span class="name">{props.user}</span>
         <span class="date">{props.upDateAt.slice(0,10)}</span>
       </div>
       {checkUser()}

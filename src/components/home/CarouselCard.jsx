@@ -13,7 +13,7 @@ function CarouselCard(props){
             />
             <div className="text">
             <h3>{props.name}</h3>
-            <p>
+            <p className="text-detail">
                 {props.detail}
             </p>
             <Link to={props.path} class="improve-res">

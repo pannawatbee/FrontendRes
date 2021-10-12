@@ -35,7 +35,8 @@ function ReviewCard() {
     let searchParams = new URLSearchParams(window.location.search);
     let resId = searchParams.get("resId");
     axios.get("http://localhost:8000/restaurant/" + resId).then((res) => {
-      // console.log(res.data);
+      // console.log(res.data.review[0].User.name);
+      // console.log(res.data[0].User.name)
       // console.log(res.data.avgstarrate);
       // console.log(res.data.resteraunt);
       // console.log(res.data.review);
@@ -55,9 +56,11 @@ function ReviewCard() {
       setresId(res.data.resteraunt.id);
       // console.log(dataReview);
       // console.log(dataReview.map((item) => item.starRating));
+
+      
       axios.get("http://localhost:8000/review/" + resId).then((res) => {
-        console.log(res.data.review.length);
-        console.log(res.data.review)
+        // console.log(res.data.review.length);
+        // console.log(res.data.review)
         setReviewLength(res.data.review.length);
       });
     });
@@ -121,7 +124,7 @@ function ReviewCard() {
             {dataReview.map((o) => (
               <ReviewCardModel
                 id={o.id}
-                user={o.name}
+                user={o.User.name}
                 date={o.date}
                 reviewTitle={o.reviewTitle}
                 starRating={o.starRating}

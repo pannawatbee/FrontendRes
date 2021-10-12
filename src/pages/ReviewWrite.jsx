@@ -71,6 +71,7 @@ function ReviewWrite() {
       .then((res) => {
         // setShowImage(res.data.user.password)
         history.push("/ReviewCard?resId="+resId);
+        console.log(res)
       })
       .catch((err) => {
         console.dir(err);
