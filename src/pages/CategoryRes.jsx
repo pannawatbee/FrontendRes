@@ -14,7 +14,7 @@ function CategoryRes() {
     axios.get("http://localhost:8000/restaurant").then((res) => {
       console.log(res.data.resteraunt);
       setResteraunt(res.data.resteraunt);
-      setSliceRes(res.data.resteraunt)
+      setSliceRes(res.data.resteraunt);
     });
   }, []);
 
@@ -47,33 +47,32 @@ function CategoryRes() {
     setSliceRes(resteraunt);
   };
   return (
-    <>
-      <div class="background-cate">
-        <div class="white-background-cate">
-          <div class="wh-ba-left-cate">
-            <p>หมวดหมู่</p>
-          </div>
-          <div class="wh-ba-mid-cate">
-            <img src={res} alt="" class="img-hover1-cate" onClick={func1} />
-            <img src={cafe} alt="" class="img-hover1-cate" onClick={func2} />
-            <img src={buffet} alt="" class="img-hover1-cate" onClick={func3} />
-          </div>
-          <div class="wh-ba-right-cate">
-            <p class="wh-ba-right-ptag-cate" onClick={func4}>
-              ล้างฟิลเตอร์
-            </p>
-          </div>
+    <div class="background-cate">
+      <div class="white-background-cate">
+        <div class="wh-ba-left-cate">
+          <p>หมวดหมู่</p>
         </div>
-        <div class="card-container-cate">
-          {sliceres.map((o) => (
-            <Card
-              name={o.restaurantName}
-              img={o.restaurantImage}
-              url={"ReviewCard?resId=" + o.id}
-            />
-          ))}{" "}
-          {/* res2 */}
-          {/* <div class="card1">
+        <div class="wh-ba-mid-cate">
+          <img src={res} alt="" class="img-hover1-cate" onClick={func1} />
+          <img src={cafe} alt="" class="img-hover1-cate" onClick={func2} />
+          <img src={buffet} alt="" class="img-hover1-cate" onClick={func3} />
+        </div>
+        <div class="wh-ba-right-cate">
+          <p class="wh-ba-right-ptag-cate" onClick={func4}>
+            ล้างฟิลเตอร์
+          </p>
+        </div>
+      </div>
+      <div class="card-container-cate">
+        {sliceres.map((o) => (
+          <Card
+            name={o.restaurantName}
+            img={o.restaurantImage}
+            url={"ReviewCard?resId=" + o.id}
+          />
+        ))}{" "}
+        {/* res2 */}
+        {/* <div class="card1">
             <a href="review-card.html">
               <img src="picture/Hottobun.jpg" alt="" />
               <p>Hottobun</p>
@@ -109,9 +108,8 @@ function CategoryRes() {
               <p>Santa Fe'Steak</p>
             </a>
           </div> */}
-        </div>
       </div>
-    </>
+    </div>
   );
 }
 export default CategoryRes;

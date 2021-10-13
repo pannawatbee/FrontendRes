@@ -53,6 +53,7 @@ function AdminUpdate() {
       setCategory(res.data.resteraunt.restaurantCategory);
       setRestaurantLocation(res.data.resteraunt.restaurantLocation);
       setRestaurantDetail(res.data.resteraunt.otherDetail);
+      setImgBlob(res.data.resteraunt.restaurantImage)
     });
   }, []);
 

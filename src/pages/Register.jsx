@@ -2,7 +2,11 @@ import "../assets/css/Register.css";
 import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router";
+// import validator from 'validator';
+import isEmail from "validator/lib/isEmail";
 function Register() {
+  // console.log(validator.isEmail('foo@bar.com'))
+  // console.log(isEmail("foo@bar.com"));
   const history = useHistory();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -12,17 +16,36 @@ function Register() {
     confirmPassword: "",
   });
   const [error, setError] = useState({});
-  function validate() {
+  function validate(e) {
     /// email ห้ามซ้ำ
-    if (formData.password !== formData.confirmPassword) {
+
+    if (e.target.value !== formData.password) {
       setError({ confirmPassword: "INVALID PASSWORD" });
     } else {
       setError({});
     }
   }
-
+  function validateName(e) {
+    if (e.target.value === "") {
+      if (e.target.name === "name") {
+        setError({ name: "INVALID FIRSTNAME" });
+      }
+      if (e.target.name === "lastname") {
+        setError({ lastname: "INVALID LASTNAME" });
+      }
+    } else {
+      setError({});
+    }
+  }
+  function validateEmail(e) {
+    if (!isEmail(e.target.value)) {
+      setError({ email: "INVALID EMAIL" });
+    } else {
+      setError({});
+    }
+  }
   function Submit() {
-    validate();
+    // validate();
     if (Object.keys(error).length === 0) {
       axios
         .post("http://localhost:8000/user/register", formData)
@@ -33,6 +56,7 @@ function Register() {
           console.log(err);
         });
     }
+    else setError({ confirmPassword: "INVALID PASSWORD" });
     console.log(Object.keys(error).length);
   }
   return (
@@ -44,56 +68,75 @@ function Register() {
           </div>
           <div class="name">
             <p>ชื่อจริง</p>
+            {error.name && (
+              <h1 style={{ color: "red", margin: 0 }}>{error.name}</h1>
+            )}
             <input
               type="text"
+              name="name"
               class="register-input"
               value={formData.firstName}
-              onChange={(e) =>
-                setFormData({ ...formData, firstName: e.target.value })
-              }
+              onChange={(e) => {
+                validateName(e);
+                setFormData({ ...formData, firstName: e.target.value });
+              }}
             />
           </div>
           <div class="name">
             <p>นามสกุล</p>
+            {error.lastname && (
+              <h1 style={{ color: "red", margin: 0 }}>{error.lastname}</h1>
+            )}
             <input
               type="text"
               class="register-input"
+              name="lastname"
               value={formData.lastName}
-              onChange={(e) =>
-                setFormData({ ...formData, lastName: e.target.value })
-              }
+              onChange={(e) => {
+                validateName(e);
+                setFormData({ ...formData, lastName: e.target.value });
+              }}
             />
           </div>
           <div class="name">
             <p>อีเมลล์</p>
+            {error.email && (
+              <h1 style={{ color: "red", margin: 0 }}>{error.email}</h1>
+            )}
             <input
               type="text"
               class="register-input"
               value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
+              name="email"
+              onChange={(e) => {
+                validateEmail(e);
+                setFormData({ ...formData, email: e.target.value });
+              }}
             />
           </div>
           <div class="name">
             <p>พาสเวิร์ด</p>
             <input
-              type="text"
+              type="password"
               class="register-input"
               value={formData.password}
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
+              onChange={(e) => {
+                // validate(e);
+                setFormData({ ...formData, password: e.target.value });
+              }}
             />
           </div>
           <div class="name">
             <p>ยืนยันพาสเวิร์ด</p>
-            {error.confirmPassword && <h1 style={{color:'red'}}>{error.confirmPassword}</h1>}
+            {error.confirmPassword && (
+              <h1 style={{ color: "red" }}>{error.confirmPassword}</h1>
+            )}
             <input
-              type="text"
+              type="password"
               class="register-input"
               value={formData.confirmPassword}
               onChange={(e) => {
+                validate(e);
                 setFormData({ ...formData, confirmPassword: e.target.value });
               }}
               F

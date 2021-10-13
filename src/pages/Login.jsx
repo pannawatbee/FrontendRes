@@ -10,6 +10,7 @@ import jwtDecode from "jwt-decode";
 function Login() {
   const history = useHistory();
   const { setUser } = useContext(AuthContext);
+  const [error, setError] = useState({});
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -20,20 +21,27 @@ function Login() {
       const res = await axios.post("http://localhost:8000/user/login", {
         formData,
       }); //หลังบ้านส่งมา res.json({ message: "success logged in", token });
-      // console.log(res)
+      console.log(res);
       setToken(res.data.token); // เอา key ที่ data ที่มี key token ออกมา
       console.log(jwtDecode(res.data.token));
       setUser(jwtDecode(res.data.token)); // ทำเพื่อ decode token ได้ payload ออกมา
       history.push("/");
     } catch (err) {
-      console.log(err);
+      console.dir(err);
+      console.log(err.response.data.message);
+      setError({ invalidEmail: err.response.data.message });
+      setError({invalidPassword:err.response.data.message})
+      // console.log(err);
     }
   };
   return (
     <div class="login">
       <div class="login-background">
         <div class="login-whitebg-login">
-          <p class="email">อีเมลล์</p>
+          <p class="email">อีเมลล์ {error.invalidEmail && (
+            <h1 style={{ color: "red", margin: 0 }}>{error.invalidEmail}</h1>
+          )}</p>
+         
           <input
             type="text"
             class="input-login"
@@ -42,7 +50,9 @@ function Login() {
               setFormData({ ...formData, email: e.target.value })
             }
           />
-          <p class="login-password">พาสเวิร์ด</p>
+          <p class="login-password">พาสเวิร์ด{error.invalidPassword && (
+            <h1 style={{ color: "red", margin: 0 }}>{error.invalidPassword}</h1>
+          )}</p>
           <input
             type="text"
             class="input-login"
