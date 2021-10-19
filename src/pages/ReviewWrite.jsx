@@ -53,7 +53,7 @@ function ReviewWrite() {
   //   xhr.responseType = 'blob';
   //   xhr.send();
   // }
-
+  console.log(localStorage.getItem('token'))
   const writeReview = function () {
     let searchParams = new URLSearchParams(window.location.search);
     let resId = searchParams.get("resId");
@@ -65,9 +65,9 @@ function ReviewWrite() {
     formform.append("cloudinput", formData.imgBlob);
     formform.append("ResterauntId", resId);
     formform.append("UserId", user.id);
-
+    // ,{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}}
     axios
-      .post("http://localhost:8000/create-store", formform)
+      .post("http://localhost:8000/create-store",formform,{headers:{'authorization':`Bearer ${localStorage.getItem('token')}`}})
       .then((res) => {
         // setShowImage(res.data.user.password)
         history.push("/ReviewCard?resId="+resId);

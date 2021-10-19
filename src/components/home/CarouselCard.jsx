@@ -3,25 +3,24 @@ import { Link } from "react-router-dom";
 // react hooks react new version
 // 1. เบากว่า
 // 2. ง่ายกว่า
-function CarouselCard(props){
-    return(
-        <div>
-            <img
-            src={props.img}
-            alt="Hottobun"
-            style={{ width: "100%", height: "820px", opacity: "0.5" }}
-            />
-            <div className="text">
-            <h3>{props.name}</h3>
-            <p className="text-detail">
-                {props.detail}
-            </p>
-            <Link to={props.path} class="improve-res">
-                <button style={{ width: "10%"}}>อ่านเพิ่มเติม</button>
-            </Link>
-            </div>
+function CarouselCard(props) {
+  return (
+    <div>
+      <img
+        src={props.img}
+        alt="Hottobun"
+        style={{ width: "100%", height: '100vh', opacity: "0.5" }}
+        class="img-carousel"
+      />
+      <div className="text">
+        <h3 className='text-title'>{props.name}</h3>
+        <p className="text-detail-home">{props.detail}</p>
+        <Link to={props.path} class="improve-res">
+          <button style={{ width: "10%" }}>อ่านเพิ่มเติม</button>
+        </Link>
       </div>
-    )
+    </div>
+  );
 }
 
 // class CarouselCard extends Component {

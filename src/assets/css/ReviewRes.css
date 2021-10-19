@@ -54,11 +54,12 @@ body {
     justify-content: center;
     position: relative;
   }
-  .white-background {
+  .white-background-review {
     width: 1660px;
     height: 120px;
     background-color: white;
-    top: 3%;
+    /* top: 3%; */
+    margin-top: 60px;
     position: absolute;
     border-radius: 20px;
     display: flex;
@@ -98,9 +99,11 @@ body {
   
   .wh-ba-right-ptag {
     margin-left: 100px;
+    cursor: pointer;
   }
   .wh-ba-right-ptag2 {
     margin-left: 300px;
+    cursor: pointer;
   }
   
   .card-container {

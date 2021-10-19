@@ -17,25 +17,25 @@ function Header() {
   }
   console.log(user);
   return (
-    <div className="navigator" style={{ opacity:0.85}}>
-      <div className="nav-left">
-        <Link to="/">หน้าแรก</Link>
-        <Link to="/ReviewRes">รีวิวร้านอาหาร</Link>
-        <Link to="/CategoryRes">หมวดหมู่ร้านอาหาร</Link>
+    <div className="navigator-header" style={{ opacity:0.85}}>
+      <div className="nav-left-header">
+        <Link to="/" className="nav-text">หน้าแรก</Link>
+        <Link to="/ReviewRes" className="nav-text">รีวิวร้านอาหาร</Link>
+        <Link to="/CategoryRes" className="nav-text">หมวดหมู่ร้านอาหาร</Link>
       </div>
-      <div className="nav-right">
+      <div className="nav-right-header">
         <Link to="/" className="a-right">
           {user ? user.username : ""}
         </Link>
-        <Link to="/Contract" className="a-right">
+        <Link to="/Contract" className="a-right-header">
           ติดต่อเรา
         </Link>
         {user ? (
-          <Link to="/Login" className="a-right" onClick={clearToken}>
+          <Link to="/Login" className="a-right-header" onClick={clearToken}>
             ออกสู่ระบบ
           </Link>
         ) : (
-          <Link to="/Login" className="a-right">
+          <Link to="/Login" className="a-right-header">
             เข้าสู่ระบบ
           </Link>
         )}

@@ -30,7 +30,7 @@ function HomePage() {
           <li data-target="#myCarousel" data-slide-to="1"></li>
           <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
-        <div className="carousel-inner">
+        <div className="carousel-inner"  style={{  height:'860px'}}>
           {
             res.map((o , index) => (
               <div className={`item ${index === 0 ? ' active' : ''}`}>

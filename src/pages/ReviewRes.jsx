@@ -9,17 +9,29 @@ import { AuthContext } from "../contexts/authContext";
 import axios from "axios";
 function ReviewRes() {
   const { user } = useContext(AuthContext);
-  function checkUser() {
+
+  function checkUser(user) {
     if (user) {
       if (user.userType === "admin") {
         return (
-          <Link to='AdminAddRes'>
+          <Link to="AdminAddRes">
             <p>เพิ่มร้านอาหาร</p>
           </Link>
         );
-        
-      } else return null;
+      }
+      return null;
     }
+    return null;
+  }
+
+  function classFunction() {
+    if (user) {
+      if (user.userType === "admin") return "wh-ba-right-ptag";
+    }
+    return "wh-ba-right-ptag2";
+    // user.userType === "admin"
+    //             ? "wh-ba-right-ptag"
+    //             : "wh-ba-right-ptag2"
   }
   const [count, setCount] = useState(6);
   const [resteraunt, setResteraunt] = useState([]);
@@ -30,26 +42,23 @@ function ReviewRes() {
       setResteraunt(res.data.resteraunt);
     });
   }, []);
-  function handleRestaurantList(){
-    if(count>6) {setCount(6)}
-    else setCount(resteraunt.length)
+  function handleRestaurantList() {
+    if (count > 6) {
+      setCount(6);
+    } else setCount(resteraunt.length);
   }
   return (
     <div class="background">
-      <div class="white-background">
+      <div class="white-background-review">
         <div class="wh-ba-left">
           <p>รีวิวร้านอาหาร</p>
         </div>
         <div class="wh-ba-right">
-          {checkUser()}
-          <Link to="#">
-            <p
-              class= {`${user.userType==="admin"?"wh-ba-right-ptag":"wh-ba-right-ptag2"}`}
-              onClick={handleRestaurantList}
-            >
-              ดูทั้งหมด
-            </p>
-          </Link>
+          {checkUser(user)}
+
+          <p class={classFunction()} onClick={handleRestaurantList}>
+            ดูทั้งหมด
+          </p>
         </div>
       </div>
       <div id="card-container" class="card-container">
@@ -57,7 +66,7 @@ function ReviewRes() {
           <Card
             name={o.restaurantName}
             img={o.restaurantImage}
-            url={'ReviewCard?resId='+o.id}
+            url={"ReviewCard?resId=" + o.id}
           />
         ))}
       </div>
