@@ -70,44 +70,7 @@ function CategoryRes() {
             img={o.restaurantImage}
             url={"ReviewCard?resId=" + o.id}
           />
-        ))}{" "}
-        {/* res2 */}
-        {/* <div class="card1">
-            <a href="review-card.html">
-              <img src="picture/Hottobun.jpg" alt="" />
-              <p>Hottobun</p>
-            </a>
-          </div>
-          <div class="card2">
-            <a href="#">
-              <img src="picture/copper.png" alt="" />
-              <p>Copper Buffet</p>
-            </a>
-          </div>
-          <div class="card3">
-            <a href="#">
-              <img src="picture/starbuck.jpg" alt="" />
-              <p>Starbuck</p>
-            </a>
-          </div>
-          <div class="card4">
-            <a href="#">
-              <img src="picture/blackcan3.jpg" alt="" />
-              <p>Black Canyon</p>
-            </a>
-          </div>
-          <div class="card5">
-            <a href="#">
-              <img src="picture/sawadee.jpg" alt="" />
-              <p>Sawasdee</p>
-            </a>
-          </div>
-          <div class="card6">
-            <a href="#">
-              <img src="picture/santa fe steak.jpg" alt="" />
-              <p>Santa Fe'Steak</p>
-            </a>
-          </div> */}
+        ))}
       </div>
     </div>
   );

@@ -48,7 +48,7 @@ body {
   .background-cate {
     background-color: rgba(196, 196, 196, 0.69);
     /* background-color: red; */
-    height: 140vh;
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -58,7 +58,7 @@ body {
     width: 1660px;
     height: 120px;
     background-color: white;
-    top: 3%;
+    margin-top: 60px;
     position: absolute;
     border-radius: 20px;
     display: flex;
@@ -119,10 +119,10 @@ body {
   
   .card-container-cate {
     width: 1386px;
-    height: 755px;
+    height: 100%;
     /* border: 1px solid green; */
     position: absolute;
-    top: 18%;
+    margin-top: 230px;
     display: flex;
     justify-content: space-around;
     /* align-items: center; */

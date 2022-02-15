@@ -55,8 +55,7 @@ function Register() {
         .catch((err) => {
           console.log(err);
         });
-    }
-    else setError({ confirmPassword: "INVALID PASSWORD" });
+    } else setError({ confirmPassword: "INVALID PASSWORD" });
     console.log(Object.keys(error).length);
   }
   return (
@@ -121,7 +120,7 @@ function Register() {
               class="register-input"
               value={formData.password}
               onChange={(e) => {
-                // validate(e);
+                validate(e);
                 setFormData({ ...formData, password: e.target.value });
               }}
             />
@@ -139,7 +138,6 @@ function Register() {
                 validate(e);
                 setFormData({ ...formData, confirmPassword: e.target.value });
               }}
-              F
             />
           </div>
           <div class="sumbit">
