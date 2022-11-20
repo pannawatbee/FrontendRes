@@ -34,12 +34,14 @@ function ReviewCard() {
   useEffect(() => {
     let searchParams = new URLSearchParams(window.location.search);
     let resId = searchParams.get("resId");
+    console.log(resId)
     axios.get("http://localhost:8000/restaurant/" + resId).then((res) => {
       // console.log(res.data.review[0].User.name);
       // console.log(res.data[0].User.name)
       // console.log(res.data.avgstarrate);
       // console.log(res.data.resteraunt);
       // console.log(res.data.review);
+      
       setRestaurantImage(res.data.resteraunt.restaurantImage);
       setRestaurantName(res.data.resteraunt.restaurantName);
       setRestaurantDetail(res.data.resteraunt.otherDetail);

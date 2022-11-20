@@ -24,6 +24,9 @@ function AdminAddRes() {
     var input = document.getElementById("fileUploader");
     var output = document.getElementById("divFiles");
     var HTML = "";
+    console.log(input)
+    console.dir(input)
+    console.log(input.files)
     for (var i = 0; i < input.files.length; ++i) {
       console.log(input.files.item(i));
       let data = URL.createObjectURL(input.files.item(i));
@@ -32,7 +35,8 @@ function AdminAddRes() {
     }
     // setFormData({ ...formData, imgBlob: input.files.item(0) });
     setImgBlob(input.files.item(0)); //ส่งไปหลังบ้าน
-
+    console.log(input.files.item)
+    console.log(input.files.item(0))
     output.innerHTML = HTML;
   };
   function handleChangeCategory(e) {
@@ -89,7 +93,10 @@ function AdminAddRes() {
     let resId = searchParams.get("resId");
     var output = document.getElementById("divFiles");
     output.innerHTML = "";
+    // history.push("/ReviewCard?resId=" + resId);
+    if(resId!=null){
     history.push("/ReviewCard?resId=" + resId);
+    }
   };
   //    const test =function(){
   //        console.log('55')
